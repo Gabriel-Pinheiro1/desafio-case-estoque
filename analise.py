@@ -474,8 +474,13 @@ def para_json(obj):
 CACHE_BASE = PASTA_DADOS / "base_padrao.json.gz"
 
 
+BASE_VERSAO = "1"   # mude ao alterar preparar_base(), para invalidar o cache em disco
+
+
 def _hash_originais() -> str:
-    return _hash({n: (PASTA_DADOS / f"{n}.csv").read_bytes() for n in ARQUIVOS})
+    conteudos = {n: (PASTA_DADOS / f"{n}.csv").read_bytes() for n in ARQUIVOS}
+    conteudos["_versao"] = BASE_VERSAO.encode()
+    return _hash(conteudos)
 
 
 @lru_cache(maxsize=1)
@@ -530,15 +535,22 @@ def mesclar_params(p: dict | None) -> dict:
     return out
 
 
-def estimar_multiplicador(indice: list[dict], inicio: str, fim: str) -> float | None:
-    """Média do índice diário no mesmo período do ano anterior (ex.: BF 2025 para BF 2026)."""
+def estimar_multiplicador(indice: list[dict], inicio: str, fim: str, ref_inicio: str | None = None,
+                          dias_ref: int = 35) -> float | None:
+    """Multiplicador de uma campanha estimado no mesmo período do ano anterior:
+    índice médio na janela da campanha ÷ índice médio nos `dias_ref` dias antes do início da
+    primeira campanha (o "normal" pré-campanha, que é o que a demanda-base atual representa).
+    Sem histórico suficiente, devolve None."""
     idx = pd.Series({pd.Timestamp(r["data"]): r["idx"] for r in indice})
     a = pd.Timestamp(inicio) - pd.DateOffset(years=1)
     b = pd.Timestamp(fim) - pd.DateOffset(years=1)
     w = idx[(idx.index >= a) & (idx.index <= b)]
     if len(w) < max(3, 0.6 * ((b - a).days + 1)):
         return None
-    return round(float(w.mean()), 2)
+    r0 = pd.Timestamp(ref_inicio or inicio) - pd.DateOffset(years=1)
+    ref = idx[(idx.index >= r0 - pd.Timedelta(days=dias_ref)) & (idx.index < r0)]
+    base = float(ref.mean()) if len(ref) >= 14 else 1.0
+    return round(float(w.mean()) / max(base, 1e-6), 2)
 
 
 def amostra_lead_time(lts: dict, fornecedor: str) -> np.ndarray:
@@ -698,12 +710,19 @@ def calcular(base: dict, params: dict | None = None) -> dict:
     # campanhas e multiplicadores (estimados do ano anterior se não informados)
     camp = []
     mult = np.ones(T)
+    inicios = []
+    for cpn in p["campanhas"]:
+        try:
+            inicios.append(pd.Timestamp(cpn["inicio"]))
+        except Exception:
+            pass
+    ref_ini = min(inicios).strftime("%Y-%m-%d") if inicios else None
     for cpn in p["campanhas"]:
         try:
             a, b = pd.Timestamp(cpn["inicio"]), pd.Timestamp(cpn["fim"])
         except Exception:
             continue
-        est = estimar_multiplicador(base["indice"], cpn["inicio"], cpn["fim"])
+        est = estimar_multiplicador(base["indice"], cpn["inicio"], cpn["fim"], ref_ini)
         m = cpn.get("multiplicador")
         m = float(m) if m not in (None, "") else (est if est else 1.0)
         camp.append({"nome": cpn.get("nome", "Campanha"), "inicio": cpn["inicio"], "fim": cpn["fim"],
@@ -1170,11 +1189,20 @@ def recomendacoes(r: dict) -> dict:
     if bf:
         comp.append({"titulo": f"Antecipar a Black Friday: demanda {fnum(bf['multiplicador'], 1)}x de {bf['inicio'][8:10]}/{bf['inicio'][5:7]} a {bf['fim'][8:10]}/{bf['fim'][5:7]}",
                      "criterio": f"O mês com mais receita perdida por ruptura no histórico foi {pico_txt} ({brl(meses.get(pico, 0))}). O plano já antecipa os pedidos pelo lead time de cada fornecedor, incluindo a cauda longa do mais lento",
-                     "dono": "Compras + Marketing", "ganho": "Evita repetir a ruptura de dezembro/2025", "prioridade": 3})
+                     "dono": "Compras + Marketing", "ganho": f"Evita repetir a ruptura de {pico_txt}", "prioridade": 3})
     if k["po_em_excesso_qtd"]:
         comp.append({"titulo": f"Cancelar ou adiar {k['po_em_excesso_qtd']} pedidos em aberto de SKUs que já estão em excesso",
                      "criterio": "SKU com cobertura acima do limite de excesso e pedido ainda não recebido",
                      "dono": "Compras", "ganho": f"Até {brl(k['po_em_excesso_custo'])} de caixa não imobilizado", "prioridade": 4})
+    gap = k["necessidade_economica"] - k["orcamento"]
+    if gap > 0 and k.get("corte_margem_por_real"):
+        comp.append({"titulo": f"Levar à diretoria um reforço de até {brl(gap)} no orçamento, financiado em parte pela liquidação",
+                     "criterio": (f"O orçamento cobre {k['orcamento'] / max(k['necessidade_economica'], 1):.0%} da compra que se paga. No ponto de corte, cada R$ 1 a mais "
+                                  f"ainda protege R$ {fnum(k['corte_margem_por_real'], 2)} de margem bruta (veja a curva de retorno)"),
+                     "dono": "Diretoria Financeira + Compras",
+                     "ganho": (f"Receita em risco no horizonte cai de {brl(k['ruptura_proj_plano'])} para {brl(k['ruptura_proj_economico'])} com a compra econômica completa. "
+                               f"A liquidação pode devolver cerca de {brl(k['liquidacao']['valor_estimado'])} ao caixa"),
+                     "prioridade": 3})
     enc = []
     det = k["capital_parado_detalhe"]
     liq = k["liquidacao"]
@@ -1222,6 +1250,10 @@ def recomendacoes(r: dict) -> dict:
     pol.append({"titulo": "Corrigir a origem dos erros de dados (vendas duplicadas, saldos negativos, dias sem posição)",
                 "criterio": "Venda duplicada infla a média e gera compra a mais; saldo negativo parece ruptura falsa",
                 "dono": "BI/TI", "ganho": "Previsão e indicadores confiáveis sem limpeza manual", "prioridade": 5})
+    for lista in (comp, enc, pol):
+        lista.sort(key=lambda x: x["prioridade"])
+        for i, x in enumerate(lista, 1):
+            x["prioridade"] = i
     return {"compra": comp, "encalhe": enc, "processo": pol}
 
 

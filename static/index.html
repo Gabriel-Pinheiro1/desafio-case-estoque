@@ -23,11 +23,13 @@ aside{background:#fff;border-right:1px solid var(--line);padding:18px 18px 40px;
 aside h3{font-size:12px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin:20px 0 8px}
 aside h3:first-child{margin-top:0}
 .f{display:flex;flex-direction:column;gap:3px;margin-bottom:10px}
-.f label{font-size:12px;color:var(--muted)}
+.f label{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .f input,.f select{border:1px solid var(--line);border-radius:8px;padding:7px 9px;font:inherit;background:#fcfbfa}
 .f input:focus,.f select:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.f input,.f select{min-width:0;width:100%}
+.camp .f input{padding:6px 5px;font-size:12px}
 .camp{border:1px solid var(--line);border-radius:10px;padding:8px;margin-bottom:8px;background:#fcfbfa}
 .camp .row3 input{width:100%}
 .btn{border:0;border-radius:9px;padding:8px 12px;font:inherit;font-weight:600;cursor:pointer;background:var(--ink);color:#fff}
@@ -64,6 +66,7 @@ th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.4px
 td{border-bottom:1px solid #f1eee9;padding:6px 8px;vertical-align:top}
 td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 .tbl{max-height:560px;overflow:auto;border:1px solid var(--line);border-radius:10px}
+.tbl.wr th{white-space:normal}
 .pill{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11.5px;font-weight:600;white-space:nowrap}
 .p-ok{background:var(--ok-soft);color:var(--ok)}.p-warn{background:var(--warn-soft);color:var(--warn)}
 .p-bad{background:var(--bad-soft);color:var(--bad)}.p-blue{background:var(--blue-soft);color:var(--blue)}
@@ -103,7 +106,7 @@ ul.clean{margin:6px 0;padding-left:18px}ul.clean li{margin:3px 0}
   <h3>Parâmetros de negócio</h3>
   <div class="f"><label>Orçamento de compras do horizonte (R$)</label><input id="p_orcamento" type="number" step="10000"></div>
   <div class="row2">
-    <div class="f"><label>Custo de capital (% a.a.)</label><input id="p_custo_capital_aa" type="number" step="0.5" data-pct></div>
+    <div class="f"><label>Capital (% a.a.)</label><input id="p_custo_capital_aa" type="number" step="0.5" data-pct></div>
     <div class="f"><label>Armazenagem (% a.m.)</label><input id="p_armazenagem_am" type="number" step="0.1" data-pct></div>
   </div>
   <div class="f"><label>Desconto máximo de liquidação (%)</label><input id="p_desconto_max_liquidacao" type="number" step="1" data-pct></div>
@@ -232,12 +235,12 @@ ul.clean{margin:6px 0;padding-left:18px}ul.clean li{margin:3px 0}
     <div class="grid k2">
       <div class="card"><h2>Caixa x nível de serviço</h2><div class="sub">Estoque de segurança (R$, a custo) x receita em risco por falta no horizonte. Os pontos são as políticas.</div><div class="chart tall"><canvas id="cTrade"></canvas></div></div>
       <div class="card"><h2>Recomendação</h2><div id="servRec" class="small"></div>
-        <h4>Por classe ABC</h4><div class="tbl" style="max-height:none"><table id="tClasse"></table></div>
-        <h4>Nível de serviço projetado com o plano (fill rate pela previsão média)</h4><div class="tbl" style="max-height:none"><table id="tProj"></table></div>
+        <h4>Por classe ABC</h4><div class="tbl wr" style="max-height:none"><table id="tClasse"></table></div>
+        <h4>Nível de serviço projetado com o plano (fill rate pela previsão média)</h4><div class="tbl wr" style="max-height:none"><table id="tProj"></table></div>
       </div>
     </div>
     <div class="grid k2" style="margin-top:14px">
-      <div class="card"><h2>Lead time por fornecedor: a distribuição, não só a média</h2><div class="sub">Pedidos recebidos. O estoque de segurança usa a distribuição empírica (Monte Carlo), não a média.</div><div class="tbl" style="max-height:none"><table id="tLT"></table></div></div>
+      <div class="card"><h2>Lead time por fornecedor: a distribuição, não só a média</h2><div class="sub">Pedidos recebidos. O estoque de segurança usa a distribuição empírica (Monte Carlo), não a média.</div><div class="tbl wr" style="max-height:none"><table id="tLT"></table></div></div>
       <div class="card"><h2>Distribuição do lead time</h2><div class="sub">Pedidos por faixa de 5 dias</div><div class="chart tall"><canvas id="cLT"></canvas></div></div>
     </div>
   </section>
@@ -423,7 +426,7 @@ function renderPlano(){
     kpi('Em trânsito (já pedido)', mil(k.transito_custo), `${k.transito_pedidos} pedidos abertos já descontados da necessidade${k.transito_atrasados? ' · '+k.transito_atrasados+' atrasados':''}`, 'blue');
   $('#criterio').textContent = r.criterio;
   $('#corteInfo').innerHTML = k.corte_margem_por_real!=null ?
-    `Com ${mil(k.orcamento)}, o último lote que entrou protege <b>R$ ${num(k.corte_margem_por_real,2)}</b> de margem por real investido. O primeiro que ficou fora protegeria R$ ${num(k.primeiro_fora_margem_por_real,2)}. Enquanto esse número passar de R$ 1, cada real a mais de orçamento se paga.` :
+    `Com ${mil(k.orcamento)}, o último lote que entrou protege <b>R$ ${num(k.corte_margem_por_real,2)}</b> de margem por real investido. O primeiro lote que não coube no saldo do orçamento protegeria R$ ${num(k.primeiro_fora_margem_por_real,2)}. Enquanto esse número passar de R$ 1, cada real a mais de orçamento se paga.` :
     'Nenhum lote coube no orçamento.';
   const co=r.curva_orcamento;
   chart('cOrc',{type:'line',data:{datasets:[{label:'Margem protegida acumulada',data:co.map(x=>({x:x.investimento,y:x.margem_protegida})),borderColor:C.acc,backgroundColor:C.accS,fill:true,pointRadius:0,tension:.2},
@@ -484,18 +487,18 @@ function renderServico(){
     scales:{x:{title:{display:true,text:'estoque de segurança (R$ a custo)'},ticks:{callback:v=>mil(v)}},y:{title:{display:true,text:'receita em risco no horizonte'},ticks:{callback:v=>mil(v)}}}}});
   const p98=s.ponto_98, pc=s.ponto_classe, pe=s.ponto_economico;
   const tot = s.projetado.find(x=>x.classe==='Total');
-  $('#servRec').innerHTML = `<p><b>Recomendo diferenciar, com ${esc(pc.nome.replace('Por classe ',''))}, e não usar 98% para todos.</b> A meta da diretoria fica perto do ponto ótimo na média, porque a margem bruta é alta (o preço é ~4x o custo) e faltar produto custa caro. O erro está nas pontas:</p>
+  $('#servRec').innerHTML = `<p><b>Recomendo diferenciar por classe (${esc(pc.nome.replace('Por classe (','').replace(')',''))}) em vez de usar 98% para todos.</b> A meta da diretoria fica perto do ponto ótimo na média, porque a margem bruta é alta (o preço é ~4x o custo) e faltar produto custa caro. O erro está nas pontas:</p>
    <ul class="clean"><li><b>${s.economico_abaixo_90} SKUs</b> ativos têm nível econômico abaixo de 90%. São itens de giro lento com MOQ grande, em que cada compra vira estoque parado. Para eles, comprar sob demanda e renegociar o MOQ vale mais que segurança.</li>
    <li>Itens A, que concentram ${pct((s.por_classe.find(x=>x.classe==='A')||{}).receita_prevista / s.por_classe.reduce((a,b)=>a+b.receita_prevista,0),0)} da receita prevista, merecem nível acima de 98%.</li>
    <li>Descontinuados: sem meta de serviço e sem recompra.</li></ul>
    <p>Custo total no horizonte (carregar a segurança + margem perdida por falta): 98% para todos = ${brl(p98.custo_total)}; ${esc(pc.nome)} = ${brl(pc.custo_total)}; econômico por SKU = ${brl(pe.custo_total)}. A diferença é pequena, e é bom dizer isso: <b>o que define o serviço neste trimestre é o orçamento, não a meta.</b> Com o plano atual, o fill rate projetado é ${pct(tot.plano)} (sem comprar nada: ${pct(tot.sem_compra)}; com a compra econômica completa: ${pct(tot.economico)}).</p>`;
-  $('#tClasse').innerHTML=`<thead><tr><th>Classe</th><th class="n">SKUs</th><th class="n">Receita prevista</th><th class="n">Nível usado</th><th class="n">Nível econômico (mediana)</th><th class="n">Segurança (custo)</th><th class="n">MOQ > 180 dias</th></tr></thead><tbody>`+
+  $('#tClasse').innerHTML=`<thead><tr><th>Classe</th><th class="n">SKUs</th><th class="n">Receita prevista</th><th class="n">Nível usado</th><th class="n">Nível econ. (mediana)</th><th class="n">Segurança (custo)</th><th class="n">MOQ > 180 dias</th></tr></thead><tbody>`+
     s.por_classe.map(c=>`<tr><td><b>${c.classe}</b></td><td class="n">${c.skus}</td><td class="n">${mil(c.receita_prevista)}</td><td class="n">${pct(c.nivel_usado,1)}</td><td class="n">${pct(c.nivel_economico_mediano,1)}</td><td class="n">${brl(c.estoque_seguranca_custo)}</td><td class="n">${c.moq_maior_180d}</td></tr>`).join('')+'</tbody>';
-  $('#tProj').innerHTML=`<thead><tr><th>Classe</th><th class="n">Sem comprar</th><th class="n">Com o plano</th><th class="n">Compra econômica completa</th><th class="n">Receita perdida com o plano</th></tr></thead><tbody>`+
+  $('#tProj').innerHTML=`<thead><tr><th>Classe</th><th class="n">Sem comprar</th><th class="n">Com o plano</th><th class="n">Compra econ. completa</th><th class="n">Receita perdida (plano)</th></tr></thead><tbody>`+
     s.projetado.map(c=>`<tr><td><b>${c.classe}</b></td><td class="n">${pct(c.sem_compra)}</td><td class="n"><b>${pct(c.plano)}</b></td><td class="n">${pct(c.economico)}</td><td class="n">${brl(c.receita_perdida_plano)}</td></tr>`).join('')+'</tbody>';
   const lt=S.res.lead_times;
-  $('#tLT').innerHTML=`<thead><tr><th>Fornecedor</th><th class="n">Pedidos</th><th class="n">Média</th><th class="n">Mediana</th><th class="n">p90</th><th class="n">p95</th><th class="n">Máx</th><th class="n">CV</th><th class="n">Custo da variabilidade</th></tr></thead><tbody>`+
-    lt.map(f=>`<tr><td><b>${f.fornecedor}</b> <span class="muted small">${esc(f.nome)}</span></td><td class="n">${f.pedidos}</td><td class="n">${num(f.media,1)}</td><td class="n">${num(f.p50)}</td><td class="n">${num(f.p90)}</td><td class="n">${num(f.p95)}</td><td class="n">${num(f.max)}</td><td class="n">${num(f.cv,2)}</td><td class="n">${brl(f.custo_variabilidade)}</td></tr>`).join('')+'</tbody>';
+  $('#tLT').innerHTML=`<thead><tr><th>Fornecedor</th><th class="n">Pedidos</th><th class="n">Média</th><th class="n">Mediana</th><th class="n">p90</th><th class="n">p95</th><th class="n">Máx</th><th class="n">CV</th><th class="n">Custo da variab.</th></tr></thead><tbody>`+
+    lt.map(f=>`<tr><td title="${esc(f.nome)}"><b>${f.fornecedor}</b></td><td class="n">${f.pedidos}</td><td class="n">${num(f.media,1)}</td><td class="n">${num(f.p50)}</td><td class="n">${num(f.p90)}</td><td class="n">${num(f.p95)}</td><td class="n">${num(f.max)}</td><td class="n">${num(f.cv,2)}</td><td class="n">${brl(f.custo_variabilidade)}</td></tr>`).join('')+'</tbody>';
   const cores=['#2759a7','#d9176f','#1f8a5b','#b86e00','#7a3fb0','#5b6b7a'];
   chart('cLT',{type:'bar',data:{labels:lt[0]? lt[0].hist.map((_,i)=>`${i*5}-${i*5+4}`):[],datasets:lt.map((f,i)=>({label:f.fornecedor,data:f.hist,backgroundColor:cores[i%6]}))},
     options:{maintainAspectRatio:false,scales:{x:{stacked:true,title:{display:true,text:'dias entre pedido e recebimento'}},y:{stacked:true}}}});
@@ -541,7 +544,9 @@ function renderQual(){
 }
 
 // ---------------- eventos ----------------
-document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on')); document.querySelectorAll('.sec').forEach(x=>x.classList.remove('on')); t.classList.add('on'); $('#s_'+t.dataset.s).classList.add('on'); });
+function abrir(nome){ const t=document.querySelector('.tab[data-s="'+nome+'"]'); if(!t) return; document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on')); document.querySelectorAll('.sec').forEach(x=>x.classList.remove('on')); t.classList.add('on'); $('#s_'+nome).classList.add('on'); history.replaceState(null,'','#'+nome); }
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>abrir(t.dataset.s));
+if(location.hash) abrir(location.hash.slice(1));
 document.querySelectorAll('aside input:not([type=file]), aside select').forEach(el=>el.addEventListener('input',()=>{ if(el.id==='p_modo_servico') modoUI(); agendar(); }));
 $('#btnCalc').onclick=recalcular;
 $('#btnReset').onclick=()=>{ preencher(S.padrao); recalcular(); };
