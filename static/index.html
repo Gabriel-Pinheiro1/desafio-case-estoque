@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estoque GoBeauté · Plano de compras de 90 dias</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#f6f4f1; --card:#fff; --ink:#1d1b26; --muted:#6b6878; --line:#e7e3dd;
+  --accent:#d9176f; --accent-soft:#fde7f1; --blue:#2759a7; --blue-soft:#e6eefb;
+  --ok:#1f8a5b; --ok-soft:#e3f4ec; --warn:#b86e00; --warn-soft:#fdf1dc; --bad:#c0392b; --bad-soft:#fbe6e3;
+  --r:14px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.45}
+header{background:var(--ink);color:#fff;padding:16px 28px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+header h1{font-size:18px;margin:0;font-weight:700;letter-spacing:-.2px}
+header .tag{background:var(--accent);padding:3px 10px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase}
+header .meta{color:#c9c6d3;font-size:12.5px;margin-left:auto}
+.wrap{display:grid;grid-template-columns:320px 1fr;gap:0;min-height:calc(100vh - 60px)}
+aside{background:#fff;border-right:1px solid var(--line);padding:18px 18px 40px;position:sticky;top:0;height:100vh;overflow:auto}
+aside h3{font-size:12px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin:20px 0 8px}
+aside h3:first-child{margin-top:0}
+.f{display:flex;flex-direction:column;gap:3px;margin-bottom:10px}
+.f label{font-size:12px;color:var(--muted)}
+.f input,.f select{border:1px solid var(--line);border-radius:8px;padding:7px 9px;font:inherit;background:#fcfbfa}
+.f input:focus,.f select:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.camp{border:1px solid var(--line);border-radius:10px;padding:8px;margin-bottom:8px;background:#fcfbfa}
+.camp .row3 input{width:100%}
+.btn{border:0;border-radius:9px;padding:8px 12px;font:inherit;font-weight:600;cursor:pointer;background:var(--ink);color:#fff}
+.btn.sec{background:#efece8;color:var(--ink)}
+.btn.acc{background:var(--accent)}
+.btn.sm{padding:4px 8px;font-size:12px}
+.hint{font-size:11.5px;color:var(--muted);margin:2px 0 8px}
+main{padding:22px 28px 60px;min-width:0}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:18px;border-bottom:1px solid var(--line)}
+.tab{padding:9px 14px;cursor:pointer;border-radius:10px 10px 0 0;color:var(--muted);font-weight:600;border:1px solid transparent;border-bottom:none;margin-bottom:-1px}
+.tab.on{background:#fff;color:var(--ink);border-color:var(--line)}
+.sec{display:none}.sec.on{display:block}
+.grid{display:grid;gap:14px}
+.k4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.k3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.k2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:1300px){.k4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}aside{position:static;height:auto}.k3,.k2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.card h2{font-size:15px;margin:0 0 4px}
+.card .sub{color:var(--muted);font-size:12.5px;margin-bottom:10px}
+.kpi .lab{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.kpi .val{font-size:26px;font-weight:800;letter-spacing:-.5px;margin:4px 0 2px}
+.kpi .det{font-size:12.5px;color:var(--muted)}
+.kpi.acc{border-top:4px solid var(--accent)}
+.kpi.blue{border-top:4px solid var(--blue)}
+.kpi.ok{border-top:4px solid var(--ok)}
+.kpi.warn{border-top:4px solid var(--warn)}
+.bar{height:12px;background:#efece8;border-radius:99px;overflow:hidden;position:relative;margin:8px 0 4px}
+.bar>i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);border-radius:99px}
+.bar>b{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:12.8px}
+th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);border-bottom:1px solid var(--line);padding:7px 8px;position:sticky;top:0;background:#fff;cursor:pointer;white-space:nowrap}
+td{border-bottom:1px solid #f1eee9;padding:6px 8px;vertical-align:top}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbl{max-height:560px;overflow:auto;border:1px solid var(--line);border-radius:10px}
+.pill{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.p-ok{background:var(--ok-soft);color:var(--ok)}.p-warn{background:var(--warn-soft);color:var(--warn)}
+.p-bad{background:var(--bad-soft);color:var(--bad)}.p-blue{background:var(--blue-soft);color:var(--blue)}
+.p-acc{background:var(--accent-soft);color:var(--accent)}.p-mut{background:#efece8;color:var(--muted)}
+.find{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--line)}
+.find:last-child{border-bottom:0}
+.find .num{font-weight:800;font-size:15px;min-width:118px;color:var(--accent)}
+.rec{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;background:#fff}
+.rec .t{font-weight:700;margin-bottom:4px}
+.rec .m{display:grid;grid-template-columns:110px 1fr;gap:3px 10px;font-size:12.8px}
+.rec .m span:nth-child(odd){color:var(--muted)}
+.prio{display:inline-flex;width:22px;height:22px;border-radius:99px;background:var(--ink);color:#fff;font-size:12px;font-weight:700;align-items:center;justify-content:center;margin-right:8px}
+.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.toolbar input,.toolbar select{border:1px solid var(--line);border-radius:8px;padding:6px 9px;font:inherit}
+.note{background:var(--blue-soft);color:#173a73;border-radius:10px;padding:10px 12px;font-size:12.8px;margin:8px 0}
+.warnbox{background:var(--warn-soft);color:#6b4100;border-radius:10px;padding:10px 12px;font-size:12.8px;margin:8px 0}
+#status{font-size:12px;color:#c9c6d3}
+#status.busy::before{content:"";display:inline-block;width:9px;height:9px;border-radius:99px;background:var(--accent);margin-right:6px;animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.chart{position:relative;height:280px}
+.chart.tall{height:340px}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+h4{margin:14px 0 6px;font-size:13px}
+ul.clean{margin:6px 0;padding-left:18px}ul.clean li{margin:3px 0}
+.upl input[type=file]{font-size:11.5px;width:100%}
+</style>
+</head>
+<body>
+<header>
+  <span class="tag">Problema 3 · Estoque</span>
+  <h1>GoBeauté: plano de compras de 90 dias e estoque parado</h1>
+  <span class="meta"><span id="status">carregando…</span> · <span id="fonte">dados originais</span> · referência <b id="dref">-</b></span>
+</header>
+<div class="wrap">
+<aside>
+  <h3>Parâmetros de negócio</h3>
+  <div class="f"><label>Orçamento de compras do horizonte (R$)</label><input id="p_orcamento" type="number" step="10000"></div>
+  <div class="row2">
+    <div class="f"><label>Custo de capital (% a.a.)</label><input id="p_custo_capital_aa" type="number" step="0.5" data-pct></div>
+    <div class="f"><label>Armazenagem (% a.m.)</label><input id="p_armazenagem_am" type="number" step="0.1" data-pct></div>
+  </div>
+  <div class="f"><label>Desconto máximo de liquidação (%)</label><input id="p_desconto_max_liquidacao" type="number" step="1" data-pct></div>
+  <div class="row2">
+    <div class="f"><label>Início do horizonte</label><input id="p_inicio_horizonte" type="date"></div>
+    <div class="f"><label>Dias do horizonte</label><input id="p_dias_horizonte" type="number" step="1"></div>
+  </div>
+
+  <h3>Nível de serviço</h3>
+  <div class="f"><label>Política</label>
+    <select id="p_modo_servico">
+      <option value="classe">Por classe ABC</option>
+      <option value="uniforme">Uniforme (igual para todos)</option>
+      <option value="economico">Econômico por SKU (margem x custo de carregar)</option>
+    </select></div>
+  <div class="row3" id="box_classe">
+    <div class="f"><label>A (%)</label><input id="ns_A" type="number" step="0.5" min="50" max="99.9"></div>
+    <div class="f"><label>B (%)</label><input id="ns_B" type="number" step="0.5" min="50" max="99.9"></div>
+    <div class="f"><label>C (%)</label><input id="ns_C" type="number" step="0.5" min="50" max="99.9"></div>
+  </div>
+  <div class="f" id="box_uni"><label>Nível uniforme (%)</label><input id="p_nivel_servico_uniforme" type="number" step="0.5" data-pct></div>
+  <div class="hint">Probabilidade de não faltar produto em cada ciclo de reposição. Descontinuados não são recomprados.</div>
+
+  <h3>Calendário comercial</h3>
+  <div id="campanhas"></div>
+  <button class="btn sec sm" id="addCamp">+ campanha</button>
+  <div class="hint">Multiplicador em branco: usa o estimado no mesmo período do ano anterior.</div>
+
+  <h3>Regras do plano</h3>
+  <div class="row2">
+    <div class="f"><label>Cobertura por pedido (dias)</label><input id="p_cobertura_pedido_dias" type="number" step="5"></div>
+    <div class="f"><label>Janela de demanda (dias)</label><input id="p_janela_base_dias" type="number" step="7" disabled title="Fixa em 56 dias, ampliada se houver poucos dias com estoque"></div>
+  </div>
+  <div class="f"><label>Compras do horizonte cobrem a demanda até</label>
+    <select id="p_cobertura_ate"><option value="horizonte">o fim do horizonte</option><option value="horizonte_lt">o fim do horizonte + lead time</option></select></div>
+  <div class="row2">
+    <div class="f"><label>Excesso acima de (dias)</label><input id="p_dias_excesso" type="number" step="10"></div>
+    <div class="f"><label>Liquidar acima de (dias)</label><input id="p_giro_max_dias" type="number" step="30"></div>
+  </div>
+  <div class="row2">
+    <div class="f"><label>Aumento da venda na liquidação (x)</label><input id="p_lift_liquidacao" type="number" step="0.1"></div>
+    <div class="f"><label>Prazo da liquidação (dias)</label><input id="p_janela_liquidacao_dias" type="number" step="15"></div>
+  </div>
+  <div style="display:flex;gap:8px;margin-top:6px">
+    <button class="btn acc" id="btnCalc">Recalcular</button>
+    <button class="btn sec" id="btnReset">Restaurar padrão</button>
+  </div>
+  <div class="hint">Toda mudança recalcula sozinha em cerca de 1 segundo.</div>
+
+  <h3>Dados novos (mesmo formato)</h3>
+  <div class="upl">
+    <div class="f"><label>skus.csv</label><input type="file" accept=".csv,.gz" data-nome="skus"></div>
+    <div class="f"><label>vendas_diarias.csv</label><input type="file" accept=".csv,.gz" data-nome="vendas_diarias"></div>
+    <div class="f"><label>estoque_diario.csv</label><input type="file" accept=".csv,.gz" data-nome="estoque_diario"></div>
+    <div class="f"><label>compras.csv</label><input type="file" accept=".csv,.gz" data-nome="compras"></div>
+    <div class="f"><label>fornecedores.csv</label><input type="file" accept=".csv,.gz" data-nome="fornecedores"></div>
+  </div>
+  <div style="display:flex;gap:8px">
+    <button class="btn" id="btnUpload">Enviar e recalcular</button>
+    <button class="btn sec" id="btnOrig">Dados originais</button>
+  </div>
+  <div class="hint">Envie só os arquivos que mudaram; os demais vêm dos originais. O navegador compacta cada arquivo em gzip antes de enviar: 4,6 MB viram cerca de 1 MB, abaixo do limite de 4,5 MB por requisição da Vercel. O servidor devolve uma base pré-agregada, que fica no navegador e acompanha cada recálculo, porque o servidor não guarda estado.</div>
+  <div id="uplMsg" class="small"></div>
+</aside>
+
+<main>
+  <div class="tabs" id="tabs">
+    <div class="tab on" data-s="exec">Visão executiva</div>
+    <div class="tab" data-s="plano">Plano de compras</div>
+    <div class="tab" data-s="parado">Estoque parado</div>
+    <div class="tab" data-s="servico">Nível de serviço</div>
+    <div class="tab" data-s="ruptura">Ruptura e demanda</div>
+    <div class="tab" data-s="recs">Recomendações</div>
+    <div class="tab" data-s="qual">Qualidade dos dados</div>
+  </div>
+
+  <!-- EXECUTIVA -->
+  <section class="sec on" id="s_exec">
+    <div class="grid k4" id="kpis"></div>
+    <div class="grid k2" style="margin-top:14px">
+      <div class="card"><h2>Principais achados</h2><div class="sub">Calculados com os parâmetros atuais</div><div id="achados"></div></div>
+      <div class="card"><h2>Necessidade de compra x orçamento</h2><div class="sub" id="necSub"></div><div class="chart"><canvas id="cNec"></canvas></div></div>
+    </div>
+    <div class="grid k2" style="margin-top:14px">
+      <div class="card"><h2>Receita mensal e receita perdida por ruptura</h2><div class="sub">Receita perdida estimada pela demanda corrigida nos dias sem estoque</div><div class="chart"><canvas id="cMes"></canvas></div></div>
+      <div class="card"><h2>Demanda prevista no horizonte</h2><div class="sub">Unidades por dia (base corrigida x multiplicadores de campanha)</div><div class="chart"><canvas id="cPrev"></canvas></div></div>
+    </div>
+  </section>
+
+  <!-- PLANO -->
+  <section class="sec" id="s_plano">
+    <div class="grid k4" id="kpisPlano"></div>
+    <div class="grid k2" style="margin-top:14px">
+      <div class="card"><h2>Critério de priorização (o que sai primeiro)</h2><div id="criterio" class="small"></div><div id="corteInfo" class="note"></div></div>
+      <div class="card"><h2>Retorno do orçamento</h2><div class="sub">Margem bruta protegida acumulada por R$ investido, na ordem de prioridade. A linha marca o orçamento.</div><div class="chart"><canvas id="cOrc"></canvas></div></div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <div class="toolbar">
+        <h2 style="margin-right:auto">Pedidos de compra (emitir na data indicada)</h2>
+        <select id="fStatus"><option value="comprar">Pedidos a emitir</option><option value="fora">Cortados ou reduzidos</option><option value="todos">Todos</option></select>
+        <input id="fBusca" placeholder="buscar SKU, produto, fornecedor">
+        <button class="btn" id="btnCsv">Exportar CSV</button>
+      </div>
+      <div class="tbl"><table id="tPlano"></table></div>
+      <div class="hint">Quantidade na unidade de compra do cadastro (un ou cx 12 un), em múltiplos do MOQ. "Sugerido" é o que a política pediria sem limite de orçamento.</div>
+    </div>
+  </section>
+
+  <!-- PARADO -->
+  <section class="sec" id="s_parado">
+    <div class="grid k4" id="kpisParado"></div>
+    <div class="grid k2" style="margin-top:14px">
+      <div class="card"><h2>Capital parado por marca</h2><div class="sub">Custo do estoque acima do limite de excesso, mais todo o estoque dos descontinuados</div><div class="chart"><canvas id="cMarca"></canvas></div></div>
+      <div class="card"><h2>Como decidir o que liquidar</h2><div id="regraLiq" class="small"></div></div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <div class="toolbar"><h2 style="margin-right:auto">Itens parados e ação recomendada</h2>
+        <select id="fTipo"><option value="">Todos</option><option value="descontinuado">Descontinuados</option><option value="excesso">Excesso (ativos)</option><option value="sem_giro">Sem giro</option></select>
+        <button class="btn sec" id="btnCsvParado">Exportar CSV</button></div>
+      <div class="tbl"><table id="tParado"></table></div>
+    </div>
+  </section>
+
+  <!-- SERVICO -->
+  <section class="sec" id="s_servico">
+    <div class="grid k2">
+      <div class="card"><h2>Caixa x nível de serviço</h2><div class="sub">Estoque de segurança (R$, a custo) x receita em risco por falta no horizonte. Os pontos são as políticas.</div><div class="chart tall"><canvas id="cTrade"></canvas></div></div>
+      <div class="card"><h2>Recomendação</h2><div id="servRec" class="small"></div>
+        <h4>Por classe ABC</h4><div class="tbl" style="max-height:none"><table id="tClasse"></table></div>
+        <h4>Nível de serviço projetado com o plano (fill rate pela previsão média)</h4><div class="tbl" style="max-height:none"><table id="tProj"></table></div>
+      </div>
+    </div>
+    <div class="grid k2" style="margin-top:14px">
+      <div class="card"><h2>Lead time por fornecedor: a distribuição, não só a média</h2><div class="sub">Pedidos recebidos. O estoque de segurança usa a distribuição empírica (Monte Carlo), não a média.</div><div class="tbl" style="max-height:none"><table id="tLT"></table></div></div>
+      <div class="card"><h2>Distribuição do lead time</h2><div class="sub">Pedidos por faixa de 5 dias</div><div class="chart tall"><canvas id="cLT"></canvas></div></div>
+    </div>
+  </section>
+
+  <!-- RUPTURA -->
+  <section class="sec" id="s_ruptura">
+    <div class="grid k3" id="kpisRup"></div>
+    <div class="card" style="margin-top:14px"><h2>Como a demanda foi corrigida</h2><div class="small" id="metRup"></div></div>
+    <div class="card" style="margin-top:14px"><h2>SKUs com mais receita perdida (12 meses)</h2><div class="tbl"><table id="tRup"></table></div></div>
+    <div class="card" style="margin-top:14px"><h2>Índice de sazonalidade diário do portfólio</h2><div class="sub">Venda por SKU-dia com estoque ÷ mediana móvel de 91 dias. É dele que saem os multiplicadores de campanha.</div><div class="chart"><canvas id="cIdx"></canvas></div></div>
+  </section>
+
+  <!-- RECS -->
+  <section class="sec" id="s_recs">
+    <div class="grid k3">
+      <div><h2 style="font-size:15px">1. Decisão de compra</h2><div id="r_compra"></div></div>
+      <div><h2 style="font-size:15px">2. Estoque que não gira</h2><div id="r_encalhe"></div></div>
+      <div><h2 style="font-size:15px">3. Processo e política</h2><div id="r_processo"></div></div>
+    </div>
+  </section>
+
+  <!-- QUALIDADE -->
+  <section class="sec" id="s_qual">
+    <div class="card"><h2>O que foi limpo e por quê</h2><div class="sub" id="contagens"></div><div class="tbl" style="max-height:none"><table id="tQual"></table></div></div>
+    <div class="card" style="margin-top:14px"><h2>Premissas e limites</h2><div class="small" id="premissas"></div></div>
+  </section>
+</main>
+</div>
+
+<script>
+const S = {params:null, padrao:null, base:null, res:null, charts:{}};
+const $ = s => document.querySelector(s);
+const brl = (v, d=0) => v==null?'-':'R$ '+Number(v).toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
+const mil = v => v==null?'-':(Math.abs(v)>=1e6? 'R$ '+(v/1e6).toLocaleString('pt-BR',{maximumFractionDigits:2})+' mi' : 'R$ '+(v/1e3).toLocaleString('pt-BR',{maximumFractionDigits:0})+' mil');
+const num = (v,d=0) => v==null?'-':Number(v).toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
+const pct = (v,d=1) => v==null?'-':(v*100).toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d})+'%';
+const dt = s => s? s.slice(8,10)+'/'+s.slice(5,7)+'/'+s.slice(0,4):'-';
+const esc = s => String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function status(t, busy){ const e=$('#status'); e.textContent=t; e.classList.toggle('busy',!!busy); }
+
+// ---------------- parâmetros ----------------
+const CAMPOS = ['orcamento','custo_capital_aa','armazenagem_am','desconto_max_liquidacao','inicio_horizonte','dias_horizonte','modo_servico','nivel_servico_uniforme','cobertura_pedido_dias','janela_base_dias','cobertura_ate','dias_excesso','giro_max_dias','lift_liquidacao','janela_liquidacao_dias'];
+function preencher(p){
+  CAMPOS.forEach(k=>{ const el=$('#p_'+k); if(!el) return; let v=p[k]; if(el.dataset.pct!==undefined) v=+(v*100).toFixed(3); el.value=v; });
+  ['A','B','C'].forEach(c=> $('#ns_'+c).value = +(p.nivel_servico_classe[c]*100).toFixed(2));
+  desenharCampanhas(p.campanhas);
+  modoUI();
+}
+function lerParams(){
+  const p = {};
+  CAMPOS.forEach(k=>{ const el=$('#p_'+k); if(!el||el.disabled) return; let v=el.value;
+    if(el.type==='number'){ v = v===''?null:+v; if(v!=null && el.dataset.pct!==undefined) v=v/100; }
+    p[k]=v; });
+  p.nivel_servico_classe = {}; ['A','B','C'].forEach(c=>{ const v=$('#ns_'+c).value; if(v!=='') p.nivel_servico_classe[c]=+v/100; });
+  p.campanhas = [...document.querySelectorAll('.camp')].map(div=>({
+    nome: div.querySelector('[data-k=nome]').value, inicio: div.querySelector('[data-k=inicio]').value,
+    fim: div.querySelector('[data-k=fim]').value,
+    multiplicador: div.querySelector('[data-k=mult]').value===''? null : +div.querySelector('[data-k=mult]').value }));
+  return p;
+}
+function desenharCampanhas(cs){
+  const box=$('#campanhas'); box.innerHTML='';
+  cs.forEach((c,i)=>{
+    const d=document.createElement('div'); d.className='camp';
+    d.innerHTML=`<div style="display:flex;gap:6px;margin-bottom:6px"><input data-k="nome" value="${esc(c.nome)}" style="flex:1;border:1px solid var(--line);border-radius:7px;padding:5px 7px;font:inherit">
+      <button class="btn sec sm" title="remover">×</button></div>
+      <div class="row3"><div class="f"><label>Início</label><input data-k="inicio" type="date" value="${c.inicio}"></div>
+      <div class="f"><label>Fim</label><input data-k="fim" type="date" value="${c.fim}"></div>
+      <div class="f"><label>Multiplicador</label><input data-k="mult" type="number" step="0.05" value="${c.multiplicador??''}" placeholder="auto"></div></div>`;
+    d.querySelector('button').onclick=()=>{ d.remove(); agendar(); };
+    d.querySelectorAll('input').forEach(x=>x.addEventListener('input',agendar));
+    box.appendChild(d);
+  });
+}
+function mostrarEstimados(){
+  const m = S.res.kpis.multiplicadores;
+  document.querySelectorAll('.camp').forEach((div,i)=>{ const inp=div.querySelector('[data-k=mult]'); const c=m[i];
+    if(c) inp.placeholder = c.estimado_hist? 'auto: '+c.estimado_hist.toLocaleString('pt-BR')+'x' : 'auto: 1x'; });
+}
+function modoUI(){ const m=$('#p_modo_servico').value; $('#box_classe').style.display = m==='classe'?'grid':'none'; $('#box_uni').style.display = m==='uniforme'?'flex':'none'; }
+
+let timer=null;
+function agendar(){ clearTimeout(timer); timer=setTimeout(recalcular, 550); }
+async function recalcular(){
+  S.params = lerParams();
+  status('recalculando…', true);
+  const t=performance.now();
+  try{
+    const r = await fetch('/api/calcular',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({params:S.params, base:S.base})});
+    if(!r.ok){ const e=await r.json().catch(()=>({detail:r.statusText})); throw new Error(e.detail||r.statusText); }
+    S.res = (await r.json()).resultado; render();
+    status('recalculado em '+((performance.now()-t)/1000).toFixed(1)+' s');
+  }catch(e){ status('erro: '+e.message); }
+}
+
+// ---------------- upload ----------------
+async function gzip(file){
+  if(!('CompressionStream' in window)) return file;
+  if(file.name.endsWith('.gz')) return file;
+  const s = file.stream().pipeThrough(new CompressionStream('gzip'));
+  const b = await new Response(s).blob();
+  return new File([b], file.name+'.gz', {type:'application/gzip'});
+}
+async function enviar(){
+  const fd = new FormData(); let n=0, tam=0, nomes=[];
+  for(const inp of document.querySelectorAll('.upl input[type=file]')){
+    if(inp.files[0]){ const g = await gzip(inp.files[0]); fd.append(inp.dataset.nome, g); n++; tam+=g.size; nomes.push(inp.dataset.nome); }
+  }
+  if(!n){ $('#uplMsg').textContent='Escolha ao menos um arquivo.'; return; }
+  if(tam > 4.4e6){ $('#uplMsg').innerHTML='<span style="color:var(--bad)">Mesmo compactado o envio passa de 4,4 MB. Envie os arquivos em requisições separadas ou só os que mudaram.</span>'; return; }
+  fd.append('params', JSON.stringify(lerParams()));
+  status('processando arquivos…', true); $('#uplMsg').textContent=`Enviando ${n} arquivo(s), ${(tam/1e6).toFixed(2)} MB compactados…`;
+  const t=performance.now();
+  try{
+    const r = await fetch('/api/upload',{method:'POST',body:fd});
+    const j = await r.json();
+    if(!r.ok) throw new Error(j.detail||r.statusText);
+    S.base = j.base; S.res = j.resultado; render();
+    $('#fonte').textContent = 'dados enviados: '+nomes.join(', ');
+    $('#uplMsg').innerHTML = `<span style="color:var(--ok)">Ok: ${nomes.join(', ')} processados em ${((performance.now()-t)/1000).toFixed(1)} s. Os demais arquivos são os originais.</span>`;
+    status('dados novos carregados');
+  }catch(e){ $('#uplMsg').innerHTML='<span style="color:var(--bad)">Erro: '+esc(e.message)+'</span>'; status('erro no envio'); }
+}
+
+// ---------------- render ----------------
+function chart(id, cfg){ if(S.charts[id]) S.charts[id].destroy(); S.charts[id]=new Chart(document.getElementById(id), cfg); }
+Chart.defaults.font.family='Inter, Segoe UI, system-ui, sans-serif'; Chart.defaults.font.size=11.5; Chart.defaults.color='#6b6878';
+const C = {acc:'#d9176f', accS:'rgba(217,23,111,.18)', blue:'#2759a7', blueS:'rgba(39,89,167,.18)', ok:'#1f8a5b', warn:'#b86e00', mut:'#b9b4ac', ink:'#1d1b26'};
+
+function kpi(lab,val,det,cls=''){ return `<div class="card kpi ${cls}"><div class="lab">${lab}</div><div class="val">${val}</div><div class="det">${det}</div></div>`; }
+
+function render(){
+  const r=S.res, k=r.kpis;
+  $('#dref').textContent = dt(k.data_ref);
+  mostrarEstimados();
+  // KPIs executivos
+  const cobPct = k.orcamento / Math.max(k.necessidade_economica,1);
+  const tot = r.servico.projetado.find(x=>x.classe==='Total');
+  $('#kpis').innerHTML =
+    kpi('Capital parado', mil(k.capital_parado), `${pct(k.capital_parado/k.estoque_total_custo,0)} de ${mil(k.estoque_total_custo)} em estoque (a custo). Carregar custa ${mil(k.custo_carregar_parado_ano)}/ano.`, 'acc') +
+    kpi('Receita perdida por ruptura (12 meses)', mil(k.receita_perdida_12m_ativos), `SKUs ativos; ${mil(k.receita_perdida_12m)} contando descontinuados. Margem perdida de ${mil(k.margem_perdida_12m)}.`, 'warn') +
+    kpi('Necessidade x orçamento', `${mil(k.necessidade_economica)}`, `contra orçamento de ${mil(k.orcamento)} (cobre ${pct(Math.min(cobPct,1),0)}). Necessidade líquida sem segurança nem MOQ: ${mil(k.necessidade_liquida)}.`, 'blue') +
+    kpi('Plano dentro do orçamento', mil(k.plano_custo), `${k.plano_pedidos} pedidos, ${k.plano_skus} SKUs. Protege ${mil(k.receita_protegida)} de receita; fill rate projetado de ${pct(tot.plano)}.`, 'ok');
+  // achados
+  const desc = k.capital_parado_detalhe;
+  const topPar = r.parado[0];
+  const ltPior = [...r.lead_times].sort((a,b)=>b.p90/b.p50 - a.p90/a.p50)[0];
+  const bf = k.multiplicadores.find(c=>/black/i.test(c.nome));
+  const ach = [
+    [mil(k.capital_parado), `parados: ${mil(desc.excesso)} em ativos com mais de ${S.res.parametros.dias_excesso} dias de cobertura e ${mil(desc.descontinuado)} em descontinuados. Só ${topPar? esc(topPar.descricao)+' ('+topPar.sku+')':''} soma ${topPar? mil(topPar.excesso_custo):''}.`],
+    [mil(k.receita_perdida_12m_ativos), `de receita perdida por ruptura em 12 meses (${pct(k.perda_pct_receita)} da receita), em ${k.skus_com_ruptura_12m} SKUs. O mês com mais perda foi ${(()=>{const m={};r.serie_mensal.forEach(x=>m[x.mes]=(m[x.mes]||0)+x.perda_receita);const p=Object.keys(m).sort((a,b)=>m[b]-m[a])[0];return p? p.slice(5,7)+'/'+p.slice(0,4)+' ('+mil(m[p])+')':'-';})()}.`],
+    [pct(k.subestimacao_media_simples,0), `é quanto a média simples de vendas subestima a demanda dos ${k.skus_comparados_media} SKUs ativos que romperam nos últimos 90 dias. Dia sem estoque é dia sem venda, não demanda zero.`],
+    [bf? num(bf.multiplicador,2)+'x' : '-', bf? `é a demanda da Black Friday frente à base (estimado em 2025: ${num(bf.estimado_hist,2)}x). Natal: ${num((k.multiplicadores.find(c=>/natal/i.test(c.nome))||{}).multiplicador,2)}x.`:''],
+    [ltPior? `${ltPior.p50}→${ltPior.p90} dias`:'', ltPior? `lead time do ${ltPior.fornecedor} (mediana → p90). A média de ${num(ltPior.media,1)} dias esconde uma cauda longa.`:''],
+    [mil(k.necessidade_economica), `é a compra que se paga (lotes com margem protegida maior que o custo de carregar). O orçamento de ${mil(k.orcamento)} cobre ${pct(Math.min(cobPct,1),0)}. O último real investido ainda protege ${num(k.corte_margem_por_real,2)} reais de margem.`],
+  ];
+  $('#achados').innerHTML = ach.map(a=>`<div class="find"><div class="num">${a[0]}</div><div>${a[1]}</div></div>`).join('');
+  $('#necSub').textContent = 'R$ a custo. A política pede a compra completa; o plano corta pelo critério de margem protegida por R$.';
+  chart('cNec',{type:'bar',data:{labels:['Líquida (sem segurança/MOQ)','Com estoque de segurança','Econômica (com MOQ)','Política completa','Orçamento','Plano'],
+    datasets:[{data:[k.necessidade_liquida,k.necessidade_liquida_es,k.necessidade_economica,k.necessidade_politica,k.orcamento,k.plano_custo],
+    backgroundColor:[C.mut,C.mut,C.blue,C.mut,C.ink,C.acc],borderRadius:6}]},
+    options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>brl(c.raw)}}},scales:{x:{ticks:{callback:v=>mil(v)}}}}});
+  // mensal
+  const ms={}; r.serie_mensal.forEach(x=>{ ms[x.mes]=ms[x.mes]||{rec:0,per:0}; ms[x.mes].rec+=x.receita; ms[x.mes].per+=x.perda_receita; });
+  const meses=Object.keys(ms).sort();
+  chart('cMes',{type:'bar',data:{labels:meses,datasets:[
+    {label:'Receita perdida',data:meses.map(m=>ms[m].per),backgroundColor:C.acc,yAxisID:'y1',borderRadius:4},
+    {label:'Receita realizada',data:meses.map(m=>ms[m].rec),type:'line',borderColor:C.blue,backgroundColor:C.blueS,fill:true,tension:.3,pointRadius:0,yAxisID:'y'}]},
+    options:{maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{tooltip:{callbacks:{label:c=>c.dataset.label+': '+brl(c.raw)}}},
+    scales:{y:{position:'left',ticks:{callback:v=>mil(v)},title:{display:true,text:'realizada'}},y1:{position:'right',grid:{display:false},ticks:{callback:v=>mil(v)},title:{display:true,text:'perdida'}}}}});
+  chart('cPrev',{type:'line',data:{labels:r.previsao_diaria.map(x=>dt(x.data).slice(0,5)),datasets:[{label:'Unidades/dia',data:r.previsao_diaria.map(x=>x.unidades),borderColor:C.acc,backgroundColor:C.accS,fill:true,pointRadius:0,stepped:true}]},
+    options:{maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{callback:v=>num(v)}}}}});
+  renderPlano(); renderParado(); renderServico(); renderRuptura(); renderRecs(); renderQual();
+}
+
+function renderPlano(){
+  const r=S.res,k=r.kpis;
+  $('#kpisPlano').innerHTML =
+    kpi('Pedidos a emitir', num(k.plano_pedidos), `${k.plano_skus} SKUs · ${mil(k.plano_custo)} de ${mil(k.orcamento)}`, 'ok') +
+    kpi('Cortados pelo orçamento', num(k.pedidos_cortados), `${k.pedidos_reduzidos} reduzidos · ${k.pedidos_nao_economicos} não econômicos (MOQ alto para o giro)`, 'warn') +
+    kpi('Receita em risco no horizonte', mil(k.ruptura_proj_plano), `com o plano; ${mil(k.ruptura_proj_sem_compra)} se não comprar nada e ${mil(k.ruptura_proj_economico)} com a compra econômica completa`, 'acc') +
+    kpi('Em trânsito (já pedido)', mil(k.transito_custo), `${k.transito_pedidos} pedidos abertos já descontados da necessidade${k.transito_atrasados? ' · '+k.transito_atrasados+' atrasados':''}`, 'blue');
+  $('#criterio').textContent = r.criterio;
+  $('#corteInfo').innerHTML = k.corte_margem_por_real!=null ?
+    `Com ${mil(k.orcamento)}, o último lote que entrou protege <b>R$ ${num(k.corte_margem_por_real,2)}</b> de margem por real investido. O primeiro que ficou fora protegeria R$ ${num(k.primeiro_fora_margem_por_real,2)}. Enquanto esse número passar de R$ 1, cada real a mais de orçamento se paga.` :
+    'Nenhum lote coube no orçamento.';
+  const co=r.curva_orcamento;
+  chart('cOrc',{type:'line',data:{datasets:[{label:'Margem protegida acumulada',data:co.map(x=>({x:x.investimento,y:x.margem_protegida})),borderColor:C.acc,backgroundColor:C.accS,fill:true,pointRadius:0,tension:.2},
+     {label:'Orçamento',data:[{x:k.orcamento,y:0},{x:k.orcamento,y:Math.max(...co.map(x=>x.margem_protegida),1)}],borderColor:C.ink,borderDash:[5,4],pointRadius:0}]},
+    options:{maintainAspectRatio:false,parsing:false,plugins:{tooltip:{callbacks:{label:c=>c.dataset.label+': '+brl(c.raw.y)+' com '+brl(c.raw.x)}}},
+      scales:{x:{type:'linear',ticks:{callback:v=>mil(v)},title:{display:true,text:'investimento (custo)'}},y:{ticks:{callback:v=>mil(v)}}}}});
+  tabelaPlano();
+}
+function tabelaPlano(){
+  const f=$('#fStatus').value, q=$('#fBusca').value.toLowerCase();
+  let rows=S.res.plano.filter(l=> f==='todos' || (f==='comprar'? l.qtd_un>0 : l.status!=='mantido'));
+  if(q) rows=rows.filter(l=>(l.sku+' '+l.descricao+' '+l.fornecedor+' '+l.marca).toLowerCase().includes(q));
+  const pill = s => s==='mantido'?'p-ok': s.startsWith('cortado')?'p-bad': s==='não econômico'?'p-mut':'p-warn';
+  $('#tPlano').innerHTML = `<thead><tr><th>Emitir em</th><th>Chega ~</th><th>SKU</th><th>Produto</th><th>Forn.</th><th>Classe</th><th class="n">Qtd</th><th>Unid.</th><th class="n">MOQ</th><th class="n">Custo</th><th class="n">Sugerido</th><th class="n">Margem/R$</th><th>Status</th></tr></thead><tbody>`+
+   rows.map(l=>`<tr><td>${dt(l.data_emissao)}${l.urgente?' <span class="pill p-bad">urgente</span>':''}</td><td>${dt(l.data_chegada)}</td><td>${l.sku}</td><td>${esc(l.descricao)}<div class="muted small">${esc(l.marca)} · demanda ${num(l.demanda_dia,1)}/dia · posição ${num(l.posicao_antes)} un</div></td><td>${l.fornecedor}</td><td>${l.classe} <span class="muted small">${pct(l.nivel_servico,1)}</span></td>
+   <td class="n"><b>${num(l.qtd_compra)}</b></td><td>${esc(l.unidade_compra)}</td><td class="n">${num(l.moq)}</td><td class="n">${brl(l.custo)}</td><td class="n muted">${num(l.qtd_sugerida_un)} un<br>${brl(l.custo_sugerido)}</td><td class="n">${num(l.margem_por_real,2)}</td><td><span class="pill ${pill(l.status)}">${l.status}</span></td></tr>`).join('')+'</tbody>';
+}
+function baixarCSV(nome, linhas, cols){
+  const sep=';';
+  const fmt=v=> typeof v==='number'? String(v).replace('.',',') : '"'+String(v??'').replace(/"/g,'""')+'"';
+  const txt='﻿'+cols.join(sep)+'\n'+linhas.map(l=>cols.map(c=>fmt(l[c])).join(sep)).join('\n');
+  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([txt],{type:'text/csv'})); a.download=nome; a.click();
+}
+
+function renderParado(){
+  const r=S.res,k=r.kpis,p=r.parametros,d=k.capital_parado_detalhe,lq=k.liquidacao;
+  $('#kpisParado').innerHTML =
+    kpi('Capital parado', mil(k.capital_parado), `custo de carregar: ${mil(k.custo_carregar_parado_ano)}/ano (${pct(k.custo_carregar_aa,1)} a.a.)`, 'acc') +
+    kpi('Descontinuados', mil(d.descontinuado), `${r.parado.filter(x=>x.tipo==='descontinuado').length} SKUs com estoque`, 'warn') +
+    kpi('Excesso em ativos', mil(d.excesso), `acima de ${p.dias_excesso} dias de cobertura · ${r.parado.filter(x=>x.tipo==='excesso').length} SKUs`, 'warn') +
+    kpi('Recuperável com liquidação', mil(lq.valor_estimado), `${num(lq.vende_site_un)} un vendidas no site a até ${pct(p.desconto_max_liquidacao,0)} off em ${p.janela_liquidacao_dias} dias · ${mil(lq.sem_demanda_custo)} a custo sem demanda no site`, 'ok');
+  const bm=r.por_marca.filter(x=>x.parado_custo>0);
+  chart('cMarca',{type:'bar',data:{labels:bm.map(x=>x.grupo),datasets:[{label:'Parado',data:bm.map(x=>x.parado_custo),backgroundColor:C.acc,borderRadius:5},{label:'Estoque total',data:bm.map(x=>x.estoque_custo),backgroundColor:'#e7e3dd',borderRadius:5}]},
+    options:{maintainAspectRatio:false,plugins:{tooltip:{callbacks:{label:c=>c.dataset.label+': '+brl(c.raw)}}},scales:{y:{ticks:{callback:v=>mil(v)}}}}});
+  const hb = p.custo_capital_aa + 12*p.armazenagem_am;
+  $('#regraLiq').innerHTML = `<p>Um produto ativo vendido a preço cheio, mesmo devagar, rende mais do que liquidado, até certo ponto. Carregar uma unidade custa ${pct(hb,1)} do custo por ano (capital + armazenagem). O desconto de ${pct(p.desconto_max_liquidacao,0)} custa ${pct(p.desconto_max_liquidacao,0)} do preço, e o preço é em média ~4x o custo.</p>
+  <p>Por isso a liquidação só compensa financeiramente para unidades que levariam anos para vender. O que decide de fato é o <b>risco de validade</b>: cosméticos e suplementos vencem. A regra usada é <b>liquidar o que passa de ${p.giro_max_dias} dias de cobertura</b> (editável) e todo o estoque dos descontinuados. Entre ${p.dias_excesso} e ${p.giro_max_dias} dias, a ação é suspender compras e escoar nas campanhas e em kits, sem desconto profundo.</p>
+  <p>O valor recuperável supõe que o desconto aumenta a venda diária ${num(p.lift_liquidacao,1)}x, contra a maior taxa entre a venda recente e a média de 12 meses, por ${p.janela_liquidacao_dias} dias. O que passa disso não tem demanda no site e precisa de outro canal (outlet, B2B, kits/brindes, devolução ao fornecedor).</p>
+  ${k.po_em_excesso_qtd? `<div class="warnbox">${k.po_em_excesso_qtd} pedidos em aberto são de SKUs em excesso (${mil(k.po_em_excesso_custo)}). Cancelar ou adiar.</div>`:'<div class="note">Nenhum pedido em aberto é de SKU em excesso.</div>'}`;
+  tabelaParado();
+}
+function tabelaParado(){
+  const t=$('#fTipo').value; const rows=S.res.parado.filter(x=>!t||x.tipo===t);
+  const pl={descontinuado:'p-bad',excesso:'p-warn',sem_giro:'p-mut'};
+  $('#tParado').innerHTML=`<thead><tr><th>SKU</th><th>Produto</th><th>Tipo</th><th class="n">Estoque</th><th class="n">Venda/dia</th><th class="n">Cobertura</th><th class="n">Parado (custo)</th><th class="n">Liquidar</th><th class="n">Preço liq.</th><th class="n">Recuperável</th><th>Ação</th></tr></thead><tbody>`+
+  rows.map(x=>`<tr><td>${x.sku}</td><td>${esc(x.descricao)}<div class="muted small">${esc(x.marca)} · ${esc(x.categoria)}</div></td><td><span class="pill ${pl[x.tipo]}">${x.tipo.replace('_',' ')}</span></td><td class="n">${num(x.estoque)}</td><td class="n">${num(x.demanda_dia,2)}</td><td class="n">${x.cobertura_dias==null?'∞':num(x.cobertura_dias)+' d'}</td><td class="n"><b>${brl(x.excesso_custo)}</b></td><td class="n">${num(x.liquidar_un)}</td><td class="n">${brl(x.preco_liquidacao,2)}</td><td class="n">${brl(x.valor_recuperavel)}</td><td class="small">${esc(x.acao)}</td></tr>`).join('')+'</tbody>';
+}
+
+function renderServico(){
+  const s=S.res.servico,k=S.res.kpis;
+  const curva=s.curva.map(x=>({x:x.capital_seguranca,y:x.receita_em_risco,n:x.nome}));
+  chart('cTrade',{type:'scatter',data:{datasets:[
+    {label:'Uniforme (80% a 99,5%)',data:curva,showLine:true,borderColor:C.mut,backgroundColor:C.mut,pointRadius:4},
+    {label:'Meta da diretoria: 98% para todos',data:[{x:s.ponto_98.capital_seguranca,y:s.ponto_98.receita_em_risco,n:s.ponto_98.nome}],backgroundColor:C.ink,pointRadius:8,pointStyle:'rectRot'},
+    {label:s.ponto_classe.nome,data:[{x:s.ponto_classe.capital_seguranca,y:s.ponto_classe.receita_em_risco,n:s.ponto_classe.nome}],backgroundColor:C.acc,pointRadius:9},
+    {label:'Econômico por SKU',data:[{x:s.ponto_economico.capital_seguranca,y:s.ponto_economico.receita_em_risco,n:'Econômico por SKU'}],backgroundColor:C.blue,pointRadius:8,pointStyle:'triangle'}]},
+    options:{maintainAspectRatio:false,plugins:{tooltip:{callbacks:{label:c=>c.raw.n+': segurança '+brl(c.raw.x)+', receita em risco '+brl(c.raw.y)}}},
+    scales:{x:{title:{display:true,text:'estoque de segurança (R$ a custo)'},ticks:{callback:v=>mil(v)}},y:{title:{display:true,text:'receita em risco no horizonte'},ticks:{callback:v=>mil(v)}}}}});
+  const p98=s.ponto_98, pc=s.ponto_classe, pe=s.ponto_economico;
+  const tot = s.projetado.find(x=>x.classe==='Total');
+  $('#servRec').innerHTML = `<p><b>Recomendo diferenciar, com ${esc(pc.nome.replace('Por classe ',''))}, e não usar 98% para todos.</b> A meta da diretoria fica perto do ponto ótimo na média, porque a margem bruta é alta (o preço é ~4x o custo) e faltar produto custa caro. O erro está nas pontas:</p>
+   <ul class="clean"><li><b>${s.economico_abaixo_90} SKUs</b> ativos têm nível econômico abaixo de 90%. São itens de giro lento com MOQ grande, em que cada compra vira estoque parado. Para eles, comprar sob demanda e renegociar o MOQ vale mais que segurança.</li>
+   <li>Itens A, que concentram ${pct((s.por_classe.find(x=>x.classe==='A')||{}).receita_prevista / s.por_classe.reduce((a,b)=>a+b.receita_prevista,0),0)} da receita prevista, merecem nível acima de 98%.</li>
+   <li>Descontinuados: sem meta de serviço e sem recompra.</li></ul>
+   <p>Custo total no horizonte (carregar a segurança + margem perdida por falta): 98% para todos = ${brl(p98.custo_total)}; ${esc(pc.nome)} = ${brl(pc.custo_total)}; econômico por SKU = ${brl(pe.custo_total)}. A diferença é pequena, e é bom dizer isso: <b>o que define o serviço neste trimestre é o orçamento, não a meta.</b> Com o plano atual, o fill rate projetado é ${pct(tot.plano)} (sem comprar nada: ${pct(tot.sem_compra)}; com a compra econômica completa: ${pct(tot.economico)}).</p>`;
+  $('#tClasse').innerHTML=`<thead><tr><th>Classe</th><th class="n">SKUs</th><th class="n">Receita prevista</th><th class="n">Nível usado</th><th class="n">Nível econômico (mediana)</th><th class="n">Segurança (custo)</th><th class="n">MOQ > 180 dias</th></tr></thead><tbody>`+
+    s.por_classe.map(c=>`<tr><td><b>${c.classe}</b></td><td class="n">${c.skus}</td><td class="n">${mil(c.receita_prevista)}</td><td class="n">${pct(c.nivel_usado,1)}</td><td class="n">${pct(c.nivel_economico_mediano,1)}</td><td class="n">${brl(c.estoque_seguranca_custo)}</td><td class="n">${c.moq_maior_180d}</td></tr>`).join('')+'</tbody>';
+  $('#tProj').innerHTML=`<thead><tr><th>Classe</th><th class="n">Sem comprar</th><th class="n">Com o plano</th><th class="n">Compra econômica completa</th><th class="n">Receita perdida com o plano</th></tr></thead><tbody>`+
+    s.projetado.map(c=>`<tr><td><b>${c.classe}</b></td><td class="n">${pct(c.sem_compra)}</td><td class="n"><b>${pct(c.plano)}</b></td><td class="n">${pct(c.economico)}</td><td class="n">${brl(c.receita_perdida_plano)}</td></tr>`).join('')+'</tbody>';
+  const lt=S.res.lead_times;
+  $('#tLT').innerHTML=`<thead><tr><th>Fornecedor</th><th class="n">Pedidos</th><th class="n">Média</th><th class="n">Mediana</th><th class="n">p90</th><th class="n">p95</th><th class="n">Máx</th><th class="n">CV</th><th class="n">Custo da variabilidade</th></tr></thead><tbody>`+
+    lt.map(f=>`<tr><td><b>${f.fornecedor}</b> <span class="muted small">${esc(f.nome)}</span></td><td class="n">${f.pedidos}</td><td class="n">${num(f.media,1)}</td><td class="n">${num(f.p50)}</td><td class="n">${num(f.p90)}</td><td class="n">${num(f.p95)}</td><td class="n">${num(f.max)}</td><td class="n">${num(f.cv,2)}</td><td class="n">${brl(f.custo_variabilidade)}</td></tr>`).join('')+'</tbody>';
+  const cores=['#2759a7','#d9176f','#1f8a5b','#b86e00','#7a3fb0','#5b6b7a'];
+  chart('cLT',{type:'bar',data:{labels:lt[0]? lt[0].hist.map((_,i)=>`${i*5}-${i*5+4}`):[],datasets:lt.map((f,i)=>({label:f.fornecedor,data:f.hist,backgroundColor:cores[i%6]}))},
+    options:{maintainAspectRatio:false,scales:{x:{stacked:true,title:{display:true,text:'dias entre pedido e recebimento'}},y:{stacked:true}}}});
+}
+
+function renderRuptura(){
+  const r=S.res,k=r.kpis;
+  $('#kpisRup').innerHTML =
+    kpi('Receita perdida (12 meses)', mil(k.receita_perdida_12m), `${mil(k.receita_perdida_12m_ativos)} em ativos · ${pct(k.perda_pct_receita)} da receita`, 'acc') +
+    kpi('SKUs com ruptura (12 meses)', num(k.skus_com_ruptura_12m), `de ${k.skus} SKUs`, 'warn') +
+    kpi('Média simples subestima', pct(k.subestimacao_media_simples,0), `nos ${k.skus_comparados_media} SKUs ativos com ruptura nos últimos 90 dias`, 'blue');
+  $('#metRup').innerHTML = `<ul class="clean">
+    <li><b>Saldo reconstruído:</b> o estoque fecha exatamente com <i>anterior − vendas + recebimentos</i>. Dias faltando e saldos negativos foram recalculados por esse balanço.</li>
+    <li><b>Ruptura total:</b> o dia começou com zero e nada chegou. A venda zero <i>não é</i> demanda zero, então a demanda desse dia é estimada.</li>
+    <li><b>Ruptura parcial:</b> o produto acabou durante o dia (fechou em zero). A venda registrada é só um piso da demanda.</li>
+    <li><b>Demanda estimada no dia sem estoque</b> = taxa local do SKU (média móvel de 57 dias, só nos dias com estoque, sem o efeito de campanha) × índice de sazonalidade do dia. Valorizada pelo preço praticado no dia (a Black Friday de 2025 teve 25% de desconto).</li>
+    <li><b>Demanda atual</b> (base do plano) = média dos últimos 56 dias <i>com estoque</i>, sem o efeito de campanha e de dia da semana. Se houver menos de 14 dias, a janela é ampliada para 120 dias ou para o histórico todo.</li></ul>`;
+  $('#tRup').innerHTML=`<thead><tr><th>SKU</th><th>Produto</th><th>Status</th><th class="n">Dias em ruptura</th><th class="n">Un perdidas</th><th class="n">Receita perdida</th><th class="n">Demanda corrigida/dia</th><th class="n">Média simples 90d</th><th class="n">Estoque hoje</th></tr></thead><tbody>`+
+    r.ruptura_top.map(x=>`<tr><td>${x.sku}</td><td>${esc(x.descricao)}<div class="muted small">${esc(x.marca)}</div></td><td><span class="pill ${x.status==='ativo'?'p-blue':'p-mut'}">${x.status}</span></td><td class="n">${x.dias_ruptura_365d}</td><td class="n">${num(x.perda_un)}</td><td class="n"><b>${brl(x.perda_receita)}</b></td><td class="n">${num(x.demanda_dia,1)}</td><td class="n">${num(x.media_simples,1)}</td><td class="n">${num(x.estoque)}</td></tr>`).join('')+'</tbody>';
+  chart('cIdx',{type:'line',data:{labels:r.indice.map(x=>x.data),datasets:[{data:r.indice.map(x=>x.idx),borderColor:C.blue,pointRadius:0,borderWidth:1.2}]},
+    options:{maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{maxTicksLimit:12,callback:function(v){const l=this.getLabelForValue(v);return l.slice(5,7)+'/'+l.slice(2,4);}}}}}});
+}
+
+function renderRecs(){
+  const R=S.res.recomendacoes;
+  const card=x=>`<div class="rec"><div class="t"><span class="prio">${x.prioridade}</span>${esc(x.titulo)}</div><div class="m"><span>Critério</span><span>${esc(x.criterio)}</span><span>Dono</span><span>${esc(x.dono)}</span><span>Ganho estimado</span><span><b>${esc(x.ganho)}</b></span></div></div>`;
+  $('#r_compra').innerHTML=R.compra.map(card).join(''); $('#r_encalhe').innerHTML=R.encalhe.map(card).join(''); $('#r_processo').innerHTML=R.processo.map(card).join('');
+}
+function renderQual(){
+  const r=S.res;
+  $('#contagens').textContent='Linhas recebidas: '+Object.entries(r.contagens).map(([a,b])=>a+' '+num(b)).join(' · ');
+  $('#tQual').innerHTML=`<thead><tr><th>Arquivo</th><th>Problema</th><th class="n">Linhas</th><th>Tratamento</th><th>Por quê</th></tr></thead><tbody>`+
+    r.qualidade.map(q=>`<tr><td>${esc(q.arquivo)}</td><td>${esc(q.problema)}</td><td class="n">${num(q.linhas)}</td><td>${esc(q.tratamento)}</td><td class="muted">${esc(q.motivo)}</td></tr>`).join('')+'</tbody>';
+  $('#premissas').innerHTML=`<ul class="clean">
+   <li>Custo unitário do cadastro vale para compras novas. O orçamento é a custo, e só os pedidos novos do horizonte consomem orçamento. Os pedidos em aberto já estavam comprometidos.</li>
+   <li>Pedidos em aberto chegam pelo lead time condicional do fornecedor: a média dos lead times históricos maiores que a idade do pedido.</li>
+   <li>As campanhas de 2026 repetem o efeito de 2025, inclusive o desconto da Black Friday. O multiplicador vale para todos os SKUs (as categorias ficaram entre 2,7x e 3,4x na BF de 2025).</li>
+   <li>A demanda não tem tendência de crescimento projetada: a base recente já reflete o patamar atual. Itens lançados há pouco têm histórico curto e previsão menos confiável.</li>
+   <li>O plano usa a previsão média para projetar o estoque. A incerteza entra no estoque de segurança (Monte Carlo com o lead time empírico e a variação diária da demanda).</li>
+   <li>Não há validade nem data de fabricação nos dados. O limite de giro para liquidar (${S.res.parametros.giro_max_dias} dias) é uma premissa editável.</li>
+   <li>O aumento de venda na liquidação (${num(S.res.parametros.lift_liquidacao,1)}x) é premissa: não há histórico de liquidação para medir a elasticidade. A BF de 2025, com 25% de desconto e campanha, teve cerca de 2,9x.</li>
+   <li>O valor de cada lote de um pedido supõe que os pedidos anteriores do mesmo SKU foram feitos. Com orçamento muito apertado, a perda projetada é a do cenário simulado com os pedidos finais.</li></ul>`;
+}
+
+// ---------------- eventos ----------------
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on')); document.querySelectorAll('.sec').forEach(x=>x.classList.remove('on')); t.classList.add('on'); $('#s_'+t.dataset.s).classList.add('on'); });
+document.querySelectorAll('aside input:not([type=file]), aside select').forEach(el=>el.addEventListener('input',()=>{ if(el.id==='p_modo_servico') modoUI(); agendar(); }));
+$('#btnCalc').onclick=recalcular;
+$('#btnReset').onclick=()=>{ preencher(S.padrao); recalcular(); };
+$('#addCamp').onclick=()=>{ const p=lerParams(); p.campanhas.push({nome:'Nova campanha',inicio:p.inicio_horizonte,fim:p.inicio_horizonte,multiplicador:1.5}); desenharCampanhas(p.campanhas); agendar(); };
+$('#btnUpload').onclick=enviar;
+$('#btnOrig').onclick=()=>{ S.base=null; $('#fonte').textContent='dados originais'; document.querySelectorAll('.upl input').forEach(i=>i.value=''); $('#uplMsg').textContent=''; recalcular(); };
+$('#fStatus').onchange=tabelaPlano; $('#fBusca').oninput=tabelaPlano; $('#fTipo').onchange=tabelaParado;
+$('#btnCsv').onclick=()=>baixarCSV('plano_compras.csv', S.res.plano.filter(l=>l.qtd_un>0), ['sku','descricao','marca','fornecedor','classe','nivel_servico','data_emissao','data_chegada','unidade_compra','moq','qtd_compra','qtd_un','custo','margem_por_real','urgente','status']);
+$('#btnCsvParado').onclick=()=>baixarCSV('estoque_parado.csv', S.res.parado, ['sku','descricao','marca','categoria','status','tipo','estoque','demanda_dia','cobertura_dias','excesso_un','excesso_custo','liquidar_un','preco_liquidacao','valor_recuperavel','sem_demanda_un','acao']);
+
+(async function(){
+  status('carregando…', true);
+  try{
+    const r = await fetch('/api/padrao'); const j=await r.json(); S.res=j.resultado; S.padrao=j.resultado.parametros_padrao;
+    preencher(S.res.parametros); render(); status('pronto');
+  }catch(e){ status('erro ao carregar: '+e.message); }
+})();
+</script>
+</body>
+</html>

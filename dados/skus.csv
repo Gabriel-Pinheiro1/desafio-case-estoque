@@ -1,0 +1,501 @@
+sku,marca,descricao,categoria,status,custo_unitario,preco_venda,fornecedor,unidade_compra,moq
+KSH-1003,Kokeshi,Hidratante Facial Pele De Porcelana,Hidratante Facial,ativo,5.38,44.9,F05,un,1000
+KSH-1004,Kokeshi,Creme Gel Facial Gota De Colageno 45G,Hidratante Facial,ativo,3.38,28.9,F05,un,500
+KSH-1007,Kokeshi,Hid Renov - Olhos De Gueixa 30G,Olhos,ativo,3.12,32.9,F05,un,500
+KSH-1009,Kokeshi,Sérum Adeus Olheiras Roll On 10Ml,Serum,ativo,4.49,30.9,F05,un,500
+KSH-1010,Kokeshi,Óleo De Rosa Mosqueta 20Ml,Óleo Facial,ativo,4.89,31.9,F05,un,2000
+KSH-1011,Kokeshi,Geleia Facial De Colageno 100G,Geleia Facial,ativo,7.96,40.9,F05,un,2000
+KSH-1013,Kokeshi,Creme Gel Facial Pele Plena 45G,Hidratante Facial,ativo,4.03,34.9,F05,un,3000
+KSH-1014,Kokeshi,Cond Msc Nutritiva Melixir 200G,Hair Care,ativo,6.72,21.9,F06,un,1000
+KSH-1016,Kokeshi,Serum Booster 30Ml,Serum,ativo,5.18,37.9,F05,un,300
+KSH-1019,Kokeshi,Cond Sérum Capilar Melixir 60Ml,Hair Care,ativo,5.77,19.9,F06,un,300
+KSH-1024,Kokeshi,Cond Melixir 240Ml,Hair Care,ativo,4.58,15.9,F06,un,1000
+KSH-1026,Kokeshi,Geleia Facial De Niacinamida 100G,Geleia Facial,ativo,6.47,35.9,F05,un,300
+KSH-1028,Kokeshi,Shampoo Melixir 250Ml,Hair Care,ativo,4.52,14.9,F06,un,500
+KSH-1029,Kokeshi,Sérum Tudo Em 1 30Ml,Serum,ativo,8.45,59.9,F05,un,300
+KSH-1033,Kokeshi,Creme Gel Facial Chuva De Ozonio 45G,Hidratante Facial,ativo,4.09,33.9,F05,un,500
+KSH-1036,Kokeshi,Sabonete Facial Pele Porcelana 190Ml,Sabonete,ativo,6.28,36.9,F05,un,1000
+KSH-1039,Kokeshi,Sérum De Arroz 30Ml,Serum,ativo,3.92,28.9,F05,un,500
+KSH-1045,Kokeshi,Deo Bd Spl Cheiro De Rica 200Ml,Body Splash,ativo,11.13,49.9,F05,un,300
+KSH-1048,Kokeshi,Água Micelar De Arroz 215Ml,Demaquilante,ativo,6.17,35.9,F05,un,300
+KSH-1054,Kokeshi,Hidratante Facial Pele De Porcelana Com Fps20 30G,Hidratante Facial,ativo,6.7,57.9,F05,un,1000
+KSH-1055,Kokeshi,Bastão Multifuncional Sunshine Fps 60 11G,Protetor Solar,ativo,15.07,58.9,F05,un,1000
+KSH-1062,Kokeshi,Lábios De Fada Hidratante Labial Amora 10G,Labial,ativo,4.57,28.9,F05,un,1000
+KSH-1066,Kokeshi,Creme Hidratante Para As Maos Kokeshi,Skin Care,descontinuado,5.2,24.9,F05,un,1000
+KSH-1073,Kokeshi,Deo Bd Spl Cheiro De Rica N3 200Ml,Body Splash,descontinuado,9.97,49.9,F05,un,500
+KSH-1080,Kokeshi,Deo Bd Spl Cheiro De Rica N2 200Ml,Body Splash,descontinuado,8.44,41.9,F05,un,1000
+KSH-1085,Kokeshi,Hidratante Corporal Cheiro De Rica 200Ml,Body Care,descontinuado,6.38,27.9,F05,un,1000
+BBS-1001,Barbour's,Deo Bd Spl My Sweet Delight 200Ml,Body Splash,ativo,10.69,54.9,F02,un,1000
+BBS-1005,Barbour's,Deo Bd Spl Very Sexy 200Ml,Body Splash,ativo,10.06,44.9,F02,un,500
+BBS-1011,Barbour's,Deo Bd Spl Bold Homme 200Ml,Body Splash,ativo,9.89,48.9,F02,un,1000
+BBS-1017,Barbour's,Deo Bd Spl Roses 200Ml,Body Splash,ativo,11.25,51.9,F02,un,2000
+BBS-1021,Barbour's,Deo Bd Spl Seduction Homme 200Ml,Body Splash,ativo,10.78,49.9,F02,un,1000
+BBS-1025,Barbour's,Deo Bd Spl Good Graces 200 Ml,Body Splash,ativo,8.92,43.9,F02,un,1000
+BBS-1029,Barbour's,Deo Bd Spl Ocean Homme 200Ml,Body Splash,ativo,8.11,40.9,F02,un,1000
+BBS-1031,Barbour's,Deo Bd Spl Alter Ego 200Ml,Body Splash,ativo,10.51,49.9,F02,un,1000
+BBS-1038,Barbour's,"Kit 3 Mini Deo Bd Spl Very Sexy, Roses E My Sweet Delight 55Ml",Body Splash,ativo,16.57,74.9,F02,un,1000
+BBS-1042,Barbour's,Deo Bd Spl Affair 200Ml,Body Splash,ativo,10.29,51.9,F02,un,500
+BBS-1049,Barbour's,Deo Bd Spl Living Grace 200Ml,Body Splash,ativo,10.04,48.9,F02,un,2000
+BBS-1055,Barbour's,Deo Bd Spl Kiss In Paradise 200Ml,Body Splash,ativo,8.98,41.9,F02,un,500
+BBS-1059,Barbour's,Deo Bd Spl Signature Homme 200Ml,Body Splash,ativo,11.0,49.9,F02,un,1000
+BBS-1061,Barbour's,Deo Bd Spl Caramel Kiss 200Ml,Body Splash,ativo,8.34,40.9,F02,un,300
+BBS-1062,Barbour's,Deo Bd Spl Pure Grace 200Ml,Body Splash,ativo,9.06,43.9,F02,un,500
+BBS-1065,Barbour's,Deo Bd Spl Midnight Homme 200Ml,Body Splash,ativo,8.79,39.9,F02,un,1000
+BBS-1070,Barbour's,Deo Bd Spl Fine Touch 200Ml,Body Splash,ativo,9.07,43.9,F02,un,1000
+BBS-1072,Barbour's,Deo Bd Spl Soft Breeze 200 Ml,Body Splash,ativo,10.04,47.9,F02,un,1000
+BBS-1077,Barbour's,Deo Bd Spl Pink Chantilly 200Ml,Body Splash,ativo,8.76,43.9,F02,un,300
+BBS-1081,Barbour's,Deo Bd Spl Vanilla Rum 200Ml,Body Splash,ativo,9.47,46.9,F02,un,1000
+BBS-1088,Barbour's,Deo Bd Spl Celestial Glow 200Ml,Body Splash,ativo,12.41,59.9,F02,un,1000
+BBS-1092,Barbour's,Deo Bd Spl Urban Homme 200Ml,Body Splash,ativo,9.21,40.9,F02,un,1000
+BBS-1098,Barbour's,Deo Bd Spl Endless Soul 200Ml,Body Splash,ativo,9.24,41.9,F02,un,500
+BBS-1100,Barbour's,Deo Bd Spl Rich 200Ml,Body Splash,ativo,9.63,42.9,F02,un,300
+BBS-1105,Barbour's,Deo Bd Spl Flowers 200Ml,Body Splash,ativo,7.89,34.9,F02,un,300
+BBS-1107,Barbour's,Deo Bd Spl Sienna Glow 200Ml,Body Splash,ativo,9.98,50.9,F02,un,500
+BBS-1112,Barbour's,Deo Bd Spl Solar Citrus 200 Ml,Body Splash,ativo,7.89,39.9,F02,un,1000
+BBS-1117,Barbour's,Deo Bd Spl Pink Sunset Shine 200Ml,Body Splash,ativo,10.72,52.9,F02,un,1000
+BBS-1120,Barbour's,Deo Bd Spl Moonlight Shimmer 200Ml,Body Splash,ativo,10.54,49.9,F02,un,1000
+BBS-1121,Barbour's,Deo Bd Spl Golden Tropic Glow 200Ml,Body Splash,ativo,11.81,60.9,F02,un,1000
+BBS-1125,Barbour's,Deo Bd Spl Blue Ocean Glow 200Ml,Body Splash,ativo,10.67,49.9,F02,un,500
+BBS-1127,Barbour's,Deo Bd Spl Lavender Lagoon Glow 200Ml,Body Splash,ativo,9.23,42.9,F02,un,500
+BBS-1130,Barbour's,Deo Bd Spl Rose Fresh 200 Ml,Body Splash,ativo,9.34,45.9,F02,un,500
+BBS-1135,Barbour's,Deo Bd Spl Rose Petal 200Ml,Body Splash,ativo,7.51,38.9,F02,un,1000
+BBS-1140,Barbour's,Deo Bd Spl Lilac Petal 200Ml,Body Splash,ativo,8.4,41.9,F02,un,300
+BBS-1141,Barbour's,Cond Pfm Fin My Sweet Delight,Perfume Capilar,ativo,15.43,53.9,F02,un,500
+BBS-1147,Barbour's,Cond Pfm Fin Very Sexy,Perfume Capilar,ativo,14.85,54.9,F02,un,1000
+BBS-1150,Barbour's,Cond Pfm Fin Alt Ego,Perfume Capilar,ativo,14.33,54.9,F02,un,300
+BBS-1153,Barbour's,Cond Pfm Fin Lvie,Perfume Capilar,ativo,15.28,54.9,F02,un,500
+BBS-1160,Barbour's,Cond Pfm Fin Roses,Perfume Capilar,ativo,14.41,52.9,F02,un,300
+BBS-1165,Barbour's,Cond Pfm Fin Tropic Sun 50Ml,Perfume Capilar,descontinuado,14.52,55.9,F02,un,1000
+BBS-1172,Barbour's,Deo Hid Corp Essential Bd Crm My Sweet Delight 230G,Body Care,ativo,9.4,37.9,F02,un,300
+BBS-1176,Barbour's,Deo Hid Corp Essential Bd Crm Very Sexy 230G,Body Care,ativo,10.74,42.9,F02,un,1000
+BBS-1181,Barbour's,Deo Hid Corp Essential Bd Crm Good Graces 230G,Body Care,ativo,10.13,43.9,F02,un,1000
+BBS-1182,Barbour's,Deo Hid Corp Essential Bd Crm Roses 230G,Body Care,ativo,11.44,47.9,F02,un,300
+BBS-1184,Barbour's,Hid Dsd Gelei My Sweet Delight 200G,Body Care,ativo,11.7,52.9,F02,un,300
+BBS-1188,Barbour's,Hid Dsd Gelei Celestial Glow 200G,Body Care,descontinuado,10.99,47.9,F02,un,300
+BBS-1191,Barbour's,Hid Dsd Gelei Living Grace 200G,Body Care,ativo,12.76,51.9,F02,un,500
+BBS-1193,Barbour's,Deo Hid Iluminador Corporal Golden Glow 115Ml,Body Care,ativo,9.42,38.9,F02,un,3000
+BBS-1196,Barbour's,Desodorante Antit. Roll-On Alter Ego 55 Ml,Desodorante,descontinuado,4.97,32.9,F02,un,300
+APC-1005,Ápice,Apice Noor Elixir Shampoo Oleo 210 Ml,Hair Care,ativo,11.55,38.9,F01,un,3000
+APC-1011,Ápice,Cond Ativ Anti-Frizz Cch Nutritivo 500G,Hair Care,ativo,10.77,36.9,F01,un,500
+APC-1018,Ápice,Cond Crm Pt Nutri Waves 500G,Hair Care,ativo,11.53,41.9,F01,un,3000
+APC-1025,Ápice,Cond Crm Pt Crs Pw 500G,Hair Care,ativo,10.63,33.9,F01,un,1000
+APC-1027,Ápice,Cond Oleo Arabe 60Ml,Hair Care,ativo,11.96,41.9,F01,un,500
+APC-1028,Ápice,Cond Blend Veg Amazonico Reparador 60 Ml,Hair Care,ativo,13.96,50.9,F01,un,1000
+APC-1032,Ápice,Cond Glt Cch Nutritivo 300Ml,Hair Care,ativo,6.33,21.9,F01,un,1000
+APC-1033,Ápice,Cond Msc Ph Control 280 Gr,Hair Care,ativo,13.77,43.9,F01,un,500
+APC-1035,Ápice,Shampoo Cch Nutritivo 300Ml,Hair Care,ativo,6.27,21.9,F01,un,1000
+APC-1039,Ápice,Cond Cch Nutritivo 300Ml,Hair Care,ativo,7.1,22.9,F01,un,1000
+APC-1046,Ápice,Cond Msc Cch Nutritiva 300G,Hair Care,ativo,7.92,26.9,F01,un,2000
+APC-1049,Ápice,Shampoo Nutri Waves 300Ml,Hair Care,ativo,8.88,29.9,F01,un,500
+APC-1050,Ápice,Cond Mss Cch Nutritivo 210Ml,Hair Care,ativo,11.53,41.9,F01,un,500
+APC-1056,Ápice,Cond Crm Pt Af Ba 500G,Hair Care,ativo,10.48,36.9,F01,un,1000
+APC-1058,Ápice,Cond Msc Ph Control 500G,Hair Care,ativo,14.6,52.9,F01,un,1000
+APC-1065,Ápice,Cond Glt Acid Nutri Waves 300Ml,Hair Care,ativo,7.23,22.9,F01,un,3000
+APC-1067,Ápice,Cond Ativ Anti-Frizz Cch Nutritivo 1000Ml,Hair Care,ativo,19.32,62.9,F01,un,3000
+APC-1072,Ápice,Cond Atv Anti Frizz 500G,Hair Care,ativo,11.28,38.9,F01,un,2000
+APC-1079,Ápice,Cond Msc Nutri Waves 300G,Hair Care,ativo,7.38,26.9,F01,un,2000
+APC-1082,Ápice,Cond Atv Mirra Fix 500G,Hair Care,ativo,16.23,56.9,F01,un,1000
+APC-1089,Ápice,Cond Nutri Waves 300Ml,Hair Care,ativo,8.19,26.9,F01,un,3000
+APC-1094,Ápice,Cond Crm Pt Nutri Waves 1000Ml,Hair Care,ativo,18.85,60.9,F01,un,1000
+APC-1099,Ápice,Cond Oleo Cch Nutritivo 60Ml,Hair Care,ativo,9.3,30.9,F01,un,3000
+APC-1101,Ápice,Shampoo Cch Nutritivo 1000Ml,Hair Care,ativo,21.68,76.9,F01,un,1000
+APC-1103,Ápice,Cond Crm Pt Crs Pw 1000Ml,Hair Care,ativo,15.42,51.9,F01,un,500
+APC-1109,Ápice,Shampoo Nutri Waves 1000Ml,Hair Care,ativo,23.92,75.9,F01,un,1000
+APC-1115,Ápice,Refil Cond Crm Pt Nutri Waves 300Ml,Hair Care,ativo,6.16,20.9,F01,un,500
+APC-1122,Ápice,Cond Oleo Nutri Waves 60Ml,Hair Care,ativo,11.07,39.9,F01,un,300
+APC-1123,Ápice,Refil Cond Crm Pt Crs Pw 300Ml,Hair Care,ativo,5.4,17.9,F01,un,1000
+APC-1130,Ápice,Cond Glt Crs Pw 300Ml,Hair Care,ativo,5.01,16.9,F01,un,3000
+APC-1131,Ápice,Shampoo Crs Pw 300Ml,Hair Care,ativo,9.49,33.9,F01,un,1000
+APC-1135,Ápice,Cond Glt Cch Nutritivo 500Ml,Hair Care,ativo,10.42,37.9,F01,un,2000
+APC-1140,Ápice,Cond Oleo Ph Control 60Ml,Hair Care,ativo,10.83,37.9,F01,un,300
+APC-1144,Ápice,Cond Crs Pw 300Ml,Hair Care,ativo,6.82,23.9,F01,un,3000
+APC-1149,Ápice,Cond Manteiga 2X1 Crs Pw 260G,Hair Care,ativo,9.51,32.9,F01,un,1000
+APC-1152,Ápice,Shampoo Esf Scalp 250G,Hair Care,ativo,17.69,63.9,F01,un,1000
+APC-1154,Ápice,Shampoo Ph Control 300Ml,Hair Care,ativo,9.7,30.9,F01,un,1000
+APC-1155,Ápice,Cond Ph Control 300Ml,Hair Care,ativo,9.29,30.9,F01,un,500
+APC-1161,Ápice,Cond Ton Scalp 200Ml,Hair Care,ativo,8.85,27.9,F01,un,1000
+APC-1167,Ápice,Shampoo Scalp 300Ml,Hair Care,ativo,7.9,24.9,F01,un,500
+APC-1174,Ápice,Cond Mirra Fix 300Ml,Hair Care,ativo,7.71,26.9,F01,un,500
+APC-1180,Ápice,Shampoo Mirra Fix 300Ml,Hair Care,ativo,8.83,28.9,F01,un,500
+APC-1182,Ápice,Cond Af Ba 300 Ml,Hair Care,ativo,7.3,23.9,F01,un,300
+APC-1183,Ápice,Shampoo Af Ba 300 Ml,Hair Care,ativo,8.24,27.9,F01,un,1000
+APC-1189,Ápice,Refil Cond Ativ Anti-Frizz Cch Nutritivo 500Ml,Hair Care,descontinuado,8.91,28.9,F01,un,3000
+APC-1193,Ápice,Cond Msc Bio Com 300G,Hair Care,descontinuado,11.25,37.9,F01,un,500
+APC-1197,Ápice,Cond Sér Rep 60Ml,Hair Care,descontinuado,10.09,32.9,F01,un,1000
+APC-1203,Ápice,Cond Msc Nutri Waves 500G,Hair Care,descontinuado,14.2,46.9,F01,un,500
+APC-1207,Ápice,Shampoo Crs Pw 1000 Ml,Hair Care,descontinuado,21.31,66.9,F01,un,300
+APC-1210,Ápice,Cond Af Ba 1000 Ml,Hair Care,descontinuado,17.49,57.9,F01,un,1000
+APC-1211,Ápice,Rim Antifrizz 10G,Hair Care,descontinuado,11.49,41.9,F01,un,300
+RTU-1002,Rituária,Formula 4 Mag 60 Caps,Suplemento,ativo,12.07,46.9,F03,un,500
+RTU-1005,Rituária,Prebiotica Fibras 200G,Suplemento,ativo,12.66,56.9,F03,un,2000
+RTU-1007,Rituária,Nac + Molibdenio + Selenio 30 Caps,Suplemento,ativo,9.26,36.9,F03,un,1000
+RTU-1011,Rituária,Formula 4 Mag 180 Caps,Suplemento,ativo,27.81,119.9,F03,un,1000
+RTU-1014,Rituária,Picolinato Boost (Termog) 60 Caps,Suplemento,ativo,8.42,35.9,F03,un,1000
+RTU-1019,Rituária,Formula Complexo B (B1 A B12) 60 Caps,Suplemento,ativo,6.89,29.9,F03,un,1000
+RTU-1020,Rituária,Nac + Molibdenio + Selenio 90 Caps,Suplemento,ativo,20.54,89.9,F03,un,3000
+RTU-1022,Rituária,Coenzima Q10 150 Mg 30 Caps,Suplemento,ativo,12.26,47.9,F03,un,1000
+RTU-1023,Rituária,Formula Femme Nutri 60 Caps,Suplemento,ativo,11.47,49.9,F03,un,300
+RTU-1024,Rituária,Fórmula Antiolheiras,Suplemento,ativo,12.56,49.9,F03,un,300
+RTU-1027,Rituária,Fórmula Cardio Ômega 3 (Super Epa) - 60 Cápsulas,Suplemento,ativo,25.69,106.9,F03,un,500
+RTU-1030,Rituária,Oleo De Rosa Mosqueta Rituaria 30Ml,Skin Care,ativo,9.99,44.9,F03,un,1000
+RTU-1033,Rituária,Formula Fabulosa 30 Caps,Suplemento,ativo,13.12,50.9,F03,un,1000
+RTU-1039,Rituária,Antioxi Nutri 30 Caps,Suplemento,ativo,10.16,39.9,F03,un,500
+RTU-1041,Rituária,Mov Nutri 60 Caps,Suplemento,descontinuado,15.61,61.9,F03,un,500
+RTU-1044,Rituária,Formula Brain + 60 Caps,Suplemento,ativo,15.89,66.9,F03,un,500
+RTU-1046,Rituária,Antioxi Nutri 90 Caps,Suplemento,ativo,28.67,119.9,F03,un,1000
+RTU-1048,Rituária,Serum Uniformizador Formula Rituaria,Skin Care,ativo,15.2,72.9,F03,un,300
+RTU-1051,Rituária,Fórmula Da Imunidade 150 G,Suplemento,ativo,13.75,52.9,F03,un,300
+RTU-1056,Rituária,Magnésio Inositol,Suplemento,ativo,25.72,102.9,F03,un,1000
+RTU-1060,Rituária,Vitamina D3 2.000 Ui Com Tcm - 60 Cápsulas,Suplemento,ativo,11.12,45.9,F03,un,500
+RTU-1066,Rituária,Fórmula Neuro Ômega 3 (Super Dha) - 60 Cápsulas,Suplemento,ativo,25.39,104.9,F03,un,500
+RTU-1070,Rituária,Formula Dermactive 30 Caps,Suplemento,ativo,12.17,53.9,F03,un,300
+RTU-1075,Rituária,Nutri Men 60 Caps,Suplemento,ativo,10.66,42.9,F03,un,500
+RTU-1077,Rituária,Greens & Superfood - Mate Com Limão,Superfoods,ativo,20.23,67.9,F03,un,1000
+RTU-1083,Rituária,Femme Protein 450G,Suplemento,ativo,64.12,253.9,F03,un,1000
+RTU-1086,Rituária,Greens & Superfood - Maçã Verde,Superfoods,ativo,22.82,76.9,F03,un,1000
+RTU-1087,Rituária,Juicy Beat 300G,Pré Treino,ativo,21.78,76.9,F03,un,500
+RTU-1090,Rituária,Gel Creme Facial Formula Renovadora,Skin Care,ativo,16.26,68.9,F03,un,1000
+RTU-1096,Rituária,Agua Micelar Facial Ac Hialuronico Formula,Skin Care,ativo,11.71,56.9,F03,un,1000
+RTU-1102,Rituária,30 Gummy Propolis,Suplemento,descontinuado,26.79,113.9,F03,un,1000
+RTU-1108,Rituária,Creatina 300 G,Suplemento,descontinuado,21.57,89.9,F03,un,500
+LSC-1002,Lescent,Deo Colonia No 2 - 25Ml,Fragrâncias,ativo,6.92,37.9,F02,un,1000
+LSC-1005,Lescent,Deo Colonia No 2 - 100Ml,Fragrâncias,ativo,23.48,151.9,F02,un,1000
+LSC-1010,Lescent,Deo Colonia No 6 - 25Ml,Fragrâncias,ativo,7.36,40.9,F02,un,1000
+LSC-1013,Lescent,Deo Colonia No 13 - 25Ml,Fragrâncias,ativo,7.9,44.9,F02,un,500
+LSC-1016,Lescent,Deo Colonia No 12 - 25Ml,Fragrâncias,ativo,7.96,47.9,F02,un,1000
+LSC-1021,Lescent,Deo Colonia No 20 - 25Ml,Fragrâncias,ativo,8.74,49.9,F02,un,1000
+LSC-1028,Lescent,Deo Colonia No 13 - 100Ml,Fragrâncias,ativo,18.79,107.9,F02,un,2000
+LSC-1029,Lescent,Deo Colonia No 10 - 25Ml,Fragrâncias,ativo,6.74,40.9,F02,un,500
+LSC-1033,Lescent,Deo Colonia No 20 - 100Ml,Fragrâncias,ativo,18.04,104.9,F02,un,1000
+LSC-1035,Lescent,Deo Colonia No 27 Golden Dubai - 25Ml,Fragrâncias,ativo,7.44,47.9,F02,un,3000
+LSC-1042,Lescent,Deo Colonia No 12 - 100Ml,Fragrâncias,ativo,23.84,146.9,F02,un,1000
+LSC-1048,Lescent,Deo Colonia No 6 - 100Ml,Fragrâncias,ativo,22.5,136.9,F02,un,500
+LSC-1055,Lescent,Deo Colonia No 26 Legance Vienna 25Ml,Fragrâncias,ativo,7.77,49.9,F02,un,3000
+LSC-1057,Lescent,Deo Colonia No 25 Athletic Barcelona - 25Ml,Fragrâncias,ativo,8.46,51.9,F02,un,1000
+LSC-1059,Lescent,Deo Colonia No 7 - 100Ml,Fragrâncias,ativo,17.48,110.9,F02,un,1000
+LSC-1064,Lescent,Deo Colonia No 22 Mystique Veneza - 25Ml,Fragrâncias,ativo,8.6,53.9,F02,un,2000
+LSC-1071,Lescent,Deo Colonia No 28 Icon Copenhague - 25Ml,Fragrâncias,ativo,8.16,51.9,F02,un,2000
+LSC-1078,Lescent,Deo Colonia No 7 - 25Ml,Fragrâncias,ativo,8.08,50.9,F02,un,500
+LSC-1085,Lescent,Deo Colonia No 10 - 100Ml,Fragrâncias,ativo,16.06,98.9,F02,un,3000
+LSC-1092,Lescent,Deo Colonia No 8 - 25Ml,Fragrâncias,ativo,9.24,56.9,F02,un,500
+LSC-1098,Lescent,Deo Colonia No 3 - 100Ml,Fragrâncias,ativo,22.48,125.9,F02,un,1000
+LSC-1099,Lescent,Deo Colonia No 29 Royal Nottingham - 25Ml,Fragrâncias,ativo,7.85,45.9,F02,un,500
+LSC-1100,Lescent,Deo Colonia No 5 - 25Ml,Fragrâncias,ativo,7.52,44.9,F02,un,1000
+LSC-1101,Lescent,Deo Colonia No 11 - 25Ml,Fragrâncias,ativo,8.84,53.9,F02,un,1000
+LSC-1107,Lescent,Deo Colonia No 3 - 25Ml,Fragrâncias,ativo,7.39,42.9,F02,un,300
+LSC-1111,Lescent,Deo Colonia No 24 Essence Bordeaux - 25Ml,Fragrâncias,ativo,8.87,54.9,F02,un,2000
+LSC-1116,Lescent,Deo Colonia No 30 Provocateur Rio - 25Ml,Fragrâncias,ativo,9.68,53.9,F02,un,1000
+LSC-1121,Lescent,Deo Colonia No 31 Authentic Milano - 25Ml,Fragrâncias,ativo,6.87,42.9,F02,un,1000
+LSC-1124,Lescent,Deo Colonia No 19 - 100Ml,Fragrâncias,descontinuado,20.06,126.9,F02,un,500
+LSC-1126,Lescent,Deo Colonia No 9 - 100Ml,Fragrâncias,descontinuado,20.25,115.9,F02,un,300
+LSC-1132,Lescent,Deo Colonia No 18 - 100Ml,Fragrâncias,ativo,19.26,114.9,F02,un,300
+BSM-1007,By Samia,Oleo Essencial De Lavanda 10 Ml,Aromaterapia,ativo,11.38,38.9,F04,cx 12 un,1
+BSM-1013,By Samia,Oleo Essencial De Alecrim 10 Ml,Aromaterapia,ativo,6.65,20.9,F04,cx 12 un,1
+BSM-1019,By Samia,Oleo Essencial De Tea Tree (Melaleuca) 10 Ml,Aromaterapia,ativo,8.03,24.9,F04,cx 12 un,1
+BSM-1021,By Samia,Oleo Essencial De Laranja 10 Ml,Aromaterapia,ativo,4.56,15.9,F04,cx 12 un,1
+BSM-1027,By Samia,Roll On Mulher 10 Ml,Aromaterapia,ativo,11.95,40.9,F04,cx 12 un,1
+BSM-1028,By Samia,Roll On Relaxante 10 Ml,Aromaterapia,ativo,12.73,42.9,F04,cx 12 un,1
+BSM-1034,By Samia,Blend De Oleos Bemestar 15 Ml,Aromaterapia,ativo,8.62,27.9,F04,cx 12 un,1
+BSM-1038,By Samia,Oleo Vegetal De Girassol 1 Lt,Aromaterapia,ativo,35.71,121.9,F04,cx 12 un,1
+BSM-1042,By Samia,Oleo Essencial De Eucalipto Globulos 10 Ml,Aromaterapia,ativo,5.54,19.9,F04,cx 12 un,1
+BSM-1047,By Samia,Oleo Vegetal De Amendoa Doce 100 Ml,Aromaterapia,ativo,9.19,33.9,F04,cx 12 un,1
+BSM-1051,By Samia,Oleo Vegetal De Rosa Mosqueta 30 Ml,Aromaterapia,ativo,5.3,17.9,F04,cx 12 un,1
+BSM-1058,By Samia,Oleo Essencial De Hortela Pimenta 10 Ml,Aromaterapia,descontinuado,9.62,34.9,F04,cx 12 un,1
+BSM-1061,By Samia,Roll On Zen 10 Ml,Aromaterapia,ativo,11.4,40.9,F04,cx 12 un,1
+BSM-1063,By Samia,Oleo Essencial De Copaiba 10 Ml,Aromaterapia,descontinuado,5.58,17.9,F04,cx 12 un,1
+BSM-1069,By Samia,Aromatizador Eletrico By Samia,Aromaterapia,descontinuado,26.09,94.9,F04,cx 12 un,1
+AUA-1002,Auá,Deo Natural Roll On Lavanda 55Ml,Desodorante,ativo,5.26,34.9,F04,cx 12 un,1
+AUA-1005,Auá,Deo Natural Roll On Verbena 55Ml,Desodorante,ativo,5.69,37.9,F04,cx 12 un,1
+AUA-1007,Auá,Serum Hidratante Preenchedor,Skin Care,ativo,43.63,212.9,F04,cx 12 un,1
+AUA-1011,Auá,Oleo Rejuvenescedor Clareador Roll-On,Skin Care,ativo,8.19,34.9,F04,cx 12 un,1
+AUA-1015,Auá,Manteiga Hidratante Corporal,Body Care,ativo,32.27,132.9,F04,cx 12 un,1
+YNZ-1006,Yenzah,Cronograma Capilar 3 Em 1 Máscara 480G,Hair Care,ativo,6.5,21.9,F06,un,500
+YNZ-1009,Yenzah,Máscara Cond. Cronograma Capilar 3 Em 1 Antifrizz 480G,Hair Care,ativo,6.74,21.9,F06,un,2000
+YNZ-1012,Yenzah,Máscara Cond. Cronograma Capilar 3 Em 1 Pós-Química 480G,Hair Care,ativo,7.85,27.9,F06,un,1000
+YNZ-1013,Yenzah,Creme Cond. De Pentear Bonita Por Natureza Cachos Rosa Mosqueta 500Ml,Hair Care,ativo,8.57,27.9,F06,un,1000
+YNZ-1014,Yenzah,Leave-In Cronograma Capilar 3 Em 1 240Ml,Hair Care,ativo,5.76,18.9,F06,un,3000
+YNZ-1017,Yenzah,Shampoo Bonita Por Natureza Cachos Rosa Mosqueta 500Ml,Hair Care,ativo,6.94,22.9,F06,un,3000
+YNZ-1024,Yenzah,Ativador De Cachos 3A A 4C Bonita Por Natureza Rosa Mosqueta 500Ml,Hair Care,ativo,6.05,19.9,F06,un,1000
+YNZ-1028,Yenzah,Condicionador Bonita Por Natureza Cachos Rosa Mosqueta 500Ml,Hair Care,ativo,7.95,28.9,F06,un,3000
+YNZ-1031,Yenzah,Sou Mais Cachos Leave-In Bom Dia 365Ml,Hair Care,descontinuado,7.51,26.9,F06,un,1000
+APC-1212,Ápice,Refil Cond Mirra Fix 500Ml,Hair Care,ativo,22.77,73.9,F01,un,500
+APC-1213,Ápice,Shampoo Anti-Frizz 300Ml,Hair Care,descontinuado,26.98,80.9,F01,un,300
+APC-1214,Ápice,Spray Termoprotetor Ph Control 200Ml,Hair Care,ativo,7.28,25.9,F01,un,300
+APC-1216,Ápice,Cond Crm Pt Scalp 1000Ml,Hair Care,ativo,15.36,48.9,F01,un,500
+APC-1218,Ápice,Cond Msc Scalp 500G,Hair Care,ativo,9.32,28.9,F01,un,300
+APC-1219,Ápice,Cond Mirra Fix 500Ml,Hair Care,ativo,15.16,57.9,F01,un,300
+APC-1220,Ápice,Cond Af Ba 300Ml,Hair Care,ativo,9.81,34.9,F01,un,300
+APC-1222,Ápice,Cond Msc Cch Nutritivo 1Kg,Hair Care,ativo,14.64,48.9,F01,un,500
+APC-1223,Ápice,Cond Oleo Noor Elixir 30Ml,Hair Care,ativo,7.85,23.9,F01,un,50
+APC-1225,Ápice,Cond Ph Control 500Ml,Hair Care,ativo,9.49,35.9,F01,un,100
+APC-1227,Ápice,Cond Crm Pt Ph Control 300G,Hair Care,ativo,18.63,70.9,F01,un,500
+APC-1229,Ápice,Cond Oleo Arabe 300Ml,Hair Care,ativo,12.93,41.9,F01,un,500
+APC-1230,Ápice,Cond Msc Oleo Arabe 500G,Hair Care,ativo,9.58,31.9,F01,un,300
+APC-1232,Ápice,Spray Termoprotetor Af Ba 200Ml,Hair Care,ativo,8.61,25.9,F01,un,2000
+APC-1233,Ápice,Cond Oleo Scalp 60Ml,Hair Care,ativo,6.67,21.9,F01,un,50
+APC-1235,Ápice,Cond Anti-Frizz 500Ml,Hair Care,ativo,7.75,24.9,F01,un,300
+APC-1236,Ápice,Cond Msc Bio Com 500G,Hair Care,ativo,7.54,26.9,F01,un,300
+APC-1237,Ápice,Cond Crm Pt Cch Nutritivo 300G,Hair Care,ativo,9.68,31.9,F01,un,50
+APC-1238,Ápice,Leave-In Oleo Arabe 200Ml,Hair Care,ativo,14.19,48.9,F01,un,50
+APC-1239,Ápice,Refil Cond Af Ba 300Ml,Hair Care,ativo,10.21,34.9,F01,un,500
+APC-1240,Ápice,Cond Crm Pt Ph Control 500G,Hair Care,ativo,14.54,44.9,F01,un,1000
+APC-1242,Ápice,Cond Glt Mirra Fix 300Ml,Hair Care,ativo,22.94,76.9,F01,un,500
+APC-1244,Ápice,Cond Msc Mirra Fix 300G,Hair Care,ativo,7.81,25.9,F01,un,300
+APC-1245,Ápice,Leave-In Anti-Frizz 200Ml,Hair Care,ativo,9.58,35.9,F01,un,300
+APC-1247,Ápice,Cond Oleo Crs Pw 60Ml,Hair Care,ativo,8.54,29.9,F01,un,300
+APC-1248,Ápice,Cond Crm Pt Anti-Frizz 500G,Hair Care,ativo,12.9,43.9,F01,un,50
+APC-1250,Ápice,Cond Crm Pt Crs Pw 300G,Hair Care,ativo,15.17,50.9,F01,un,500
+APC-1252,Ápice,Cond Msc Crs Pw 500G,Hair Care,ativo,10.38,40.9,F01,un,300
+APC-1253,Ápice,Shampoo Af Ba 1000Ml,Hair Care,ativo,7.13,25.9,F01,un,1000
+APC-1255,Ápice,Cond Crm Pt Oleo Arabe 300G,Hair Care,descontinuado,7.79,24.9,F01,un,100
+APC-1256,Ápice,Cond Msc Oleo Arabe 1Kg,Hair Care,ativo,14.25,50.9,F01,un,1000
+APC-1258,Ápice,Cond Msc Af Ba 300G,Hair Care,ativo,12.13,43.9,F01,un,300
+APC-1260,Ápice,Shampoo Oleo Arabe 300Ml,Hair Care,ativo,6.82,22.9,F01,un,1000
+APC-1261,Ápice,Shampoo Crs Pw 500Ml,Hair Care,ativo,9.42,35.9,F01,un,100
+APC-1263,Ápice,Cond Oleo Scalp 30Ml,Hair Care,ativo,23.62,78.9,F01,un,300
+APC-1264,Ápice,Cond Glt Anti-Frizz 300Ml,Hair Care,descontinuado,10.83,33.9,F01,un,100
+APC-1266,Ápice,Cond Msc Anti-Frizz 500G,Hair Care,ativo,13.72,52.9,F01,un,2000
+APC-1267,Ápice,Cond Crs Pw 500Ml,Hair Care,ativo,9.09,28.9,F01,un,1000
+APC-1269,Ápice,Cond Scalp 1000Ml,Hair Care,ativo,26.13,91.9,F01,un,1000
+APC-1271,Ápice,Cond Crm Pt Noor Elixir 300G,Hair Care,ativo,12.18,44.9,F01,un,500
+APC-1273,Ápice,Refil Cond Noor Elixir 500Ml,Hair Care,ativo,20.6,80.9,F01,un,500
+APC-1275,Ápice,Cond Bio Com 300Ml,Hair Care,ativo,16.7,56.9,F01,un,1000
+APC-1276,Ápice,Leave-In Af Ba 200Ml,Hair Care,ativo,11.84,40.9,F01,un,500
+APC-1277,Ápice,Cond Oleo Nutri Waves 30Ml,Hair Care,ativo,9.31,29.9,F01,un,300
+APC-1279,Ápice,Leave-In Ph Control 200Ml,Hair Care,ativo,14.12,44.9,F01,un,500
+APC-1280,Ápice,Cond Noor Elixir 500Ml,Hair Care,ativo,9.23,29.9,F01,un,500
+APC-1282,Ápice,Refil Cond Cch Nutritivo 300Ml,Hair Care,descontinuado,9.63,29.9,F01,un,500
+APC-1283,Ápice,Cond Crm Pt Bio Com 500G,Hair Care,ativo,9.23,31.9,F01,un,500
+APC-1284,Ápice,Refil Cond Anti-Frizz 300Ml,Hair Care,ativo,12.42,41.9,F01,un,2000
+APC-1286,Ápice,Cond Glt Nutri Waves 300Ml,Hair Care,ativo,8.9,30.9,F01,un,300
+APC-1287,Ápice,Cond Msc Noor Elixir 500G,Hair Care,ativo,11.06,34.9,F01,un,100
+APC-1288,Ápice,Refil Cond Bio Com 500Ml,Hair Care,ativo,7.95,24.9,F01,un,2000
+APC-1290,Ápice,Cond Oleo Bio Com 60Ml,Hair Care,ativo,7.76,24.9,F01,un,1000
+APC-1292,Ápice,Cond Anti-Frizz 1000Ml,Hair Care,ativo,12.78,46.9,F01,un,1000
+APC-1294,Ápice,Shampoo Crs Pw 1000Ml,Hair Care,descontinuado,15.61,54.9,F01,un,100
+APC-1295,Ápice,Refil Cond Crs Pw 500Ml,Hair Care,ativo,15.47,46.9,F01,un,50
+BBS-1296,Barbour's,Deo Bd Spl Cherry Blossom 200Ml,Body Splash,ativo,9.38,44.9,F02,un,300
+BBS-1298,Barbour's,Deo Bd Spl Velvet Oud 200Ml,Body Splash,ativo,12.97,55.9,F02,un,2000
+BBS-1300,Barbour's,Deo Bd Spl Coco Breeze 200Ml,Body Splash,ativo,9.84,45.9,F02,un,500
+BBS-1302,Barbour's,Deo Bd Spl Peach Crush 200Ml,Body Splash,descontinuado,8.25,39.9,F02,un,300
+BBS-1303,Barbour's,Deo Bd Spl Wild Berry 200Ml,Body Splash,ativo,11.41,48.9,F02,un,50
+BBS-1304,Barbour's,Deo Bd Spl Amber Nights 200Ml,Body Splash,ativo,8.53,38.9,F02,un,500
+BBS-1305,Barbour's,Deo Bd Spl Sweet Mango 200Ml,Body Splash,ativo,10.43,46.9,F02,un,500
+BBS-1306,Barbour's,Deo Bd Spl Citrus Bloom 200Ml,Body Splash,ativo,8.22,40.9,F02,un,1000
+BBS-1307,Barbour's,Deo Bd Spl Jasmine Dream 200Ml,Body Splash,ativo,10.81,57.9,F02,un,300
+BBS-1309,Barbour's,Deo Bd Spl Candy Pop 200Ml,Body Splash,ativo,8.81,41.9,F02,un,300
+BBS-1310,Barbour's,Deo Bd Spl Sunset Coral 200Ml,Body Splash,ativo,6.37,34.9,F02,un,50
+BBS-1312,Barbour's,Deo Bd Spl White Musk 200Ml,Body Splash,descontinuado,9.27,44.9,F02,un,300
+BBS-1313,Barbour's,Deo Bd Spl Ocean Mist 200Ml,Body Splash,ativo,11.13,60.9,F02,un,300
+BBS-1314,Barbour's,Deo Bd Spl Tropical Kiss 200Ml,Body Splash,ativo,10.4,54.9,F02,un,100
+BBS-1316,Barbour's,Deo Bd Spl Honey Glow 200Ml,Body Splash,ativo,9.93,50.9,F02,un,500
+BBS-1317,Barbour's,Deo Bd Spl Berry Chic 200Ml,Body Splash,ativo,10.42,47.9,F02,un,2000
+BBS-1318,Barbour's,Deo Bd Spl Night Flower 200Ml,Body Splash,ativo,10.31,53.9,F02,un,300
+BBS-1319,Barbour's,Deo Bd Spl Lime Fresh 200Ml,Body Splash,ativo,8.93,42.9,F02,un,1000
+BBS-1321,Barbour's,Deo Bd Spl Pearl Shine 200Ml,Body Splash,ativo,9.32,46.9,F02,un,300
+BBS-1322,Barbour's,Deo Bd Spl Velvet Rose 200Ml,Body Splash,ativo,6.79,36.9,F02,un,500
+BBS-1323,Barbour's,Deo Bd Spl Wood Homme 200Ml,Body Splash,ativo,9.43,43.9,F02,un,300
+BBS-1325,Barbour's,Deo Bd Spl Storm Homme 200Ml,Body Splash,ativo,10.9,48.9,F02,un,1000
+BBS-1326,Barbour's,Deo Bd Spl Pistachio Cream 200Ml,Body Splash,ativo,7.44,30.9,F02,un,50
+BBS-1327,Barbour's,Deo Bd Spl Lychee Pop 200Ml,Body Splash,descontinuado,7.96,37.9,F02,un,500
+BBS-1329,Barbour's,Deo Bd Spl Golden Hour 200Ml,Body Splash,ativo,8.49,41.9,F02,un,300
+BBS-1331,Barbour's,Hid Dsd Gelei Cherry Blossom 200G,Body Care,ativo,11.7,44.9,F02,un,50
+BBS-1333,Barbour's,Hid Dsd Gelei Velvet Oud 200G,Body Care,ativo,8.89,40.9,F02,un,100
+BBS-1335,Barbour's,Hid Dsd Gelei Coco Breeze 200G,Body Care,descontinuado,10.41,45.9,F02,un,50
+BBS-1337,Barbour's,Hid Dsd Gelei Peach Crush 200G,Body Care,ativo,11.05,50.9,F02,un,300
+BBS-1339,Barbour's,Hid Dsd Gelei Wild Berry 200G,Body Care,ativo,9.22,42.9,F02,un,1000
+BBS-1341,Barbour's,Hid Dsd Gelei Amber Nights 200G,Body Care,ativo,12.61,49.9,F02,un,1000
+BBS-1343,Barbour's,Hid Dsd Gelei Sweet Mango 200G,Body Care,ativo,12.58,47.9,F02,un,300
+BBS-1345,Barbour's,Hid Dsd Gelei Citrus Bloom 200G,Body Care,ativo,10.61,45.9,F02,un,500
+BBS-1346,Barbour's,Hid Dsd Gelei Jasmine Dream 200G,Body Care,ativo,11.83,45.9,F02,un,50
+BBS-1348,Barbour's,Hid Dsd Gelei Candy Pop 200G,Body Care,ativo,13.37,52.9,F02,un,500
+BBS-1350,Barbour's,Hid Dsd Gelei Sunset Coral 200G,Body Care,descontinuado,11.07,45.9,F02,un,300
+BBS-1351,Barbour's,Hid Dsd Gelei White Musk 200G,Body Care,ativo,9.26,40.9,F02,un,500
+BBS-1352,Barbour's,Deo Hid Corp Essential Bd Crm Cherry Blossom 230G,Body Care,ativo,10.93,47.9,F02,un,100
+BBS-1353,Barbour's,Deo Hid Corp Essential Bd Crm Velvet Oud 230G,Body Care,ativo,11.08,40.9,F02,un,500
+BBS-1354,Barbour's,Deo Hid Corp Essential Bd Crm Coco Breeze 230G,Body Care,ativo,11.13,45.9,F02,un,500
+BBS-1355,Barbour's,Deo Hid Corp Essential Bd Crm Peach Crush 230G,Body Care,descontinuado,10.17,41.9,F02,un,50
+BBS-1357,Barbour's,Deo Hid Corp Essential Bd Crm Wild Berry 230G,Body Care,ativo,9.46,39.9,F02,un,300
+BBS-1358,Barbour's,Deo Hid Corp Essential Bd Crm Amber Nights 230G,Body Care,ativo,12.91,51.9,F02,un,1000
+BBS-1360,Barbour's,Deo Hid Corp Essential Bd Crm Sweet Mango 230G,Body Care,ativo,12.29,47.9,F02,un,300
+BBS-1362,Barbour's,Deo Hid Corp Essential Bd Crm Citrus Bloom 230G,Body Care,ativo,10.22,40.9,F02,un,1000
+BBS-1364,Barbour's,Deo Hid Corp Essential Bd Crm Jasmine Dream 230G,Body Care,ativo,11.25,46.9,F02,un,500
+BBS-1366,Barbour's,Deo Hid Corp Essential Bd Crm Candy Pop 230G,Body Care,descontinuado,12.17,49.9,F02,un,300
+BBS-1368,Barbour's,Deo Hid Corp Essential Bd Crm Sunset Coral 230G,Body Care,ativo,11.59,52.9,F02,un,100
+BBS-1370,Barbour's,Deo Hid Corp Essential Bd Crm White Musk 230G,Body Care,descontinuado,8.62,35.9,F02,un,300
+BBS-1372,Barbour's,Cond Pfm Fin Cherry Blossom,Perfume Capilar,ativo,12.68,46.9,F02,un,300
+BBS-1374,Barbour's,Cond Pfm Fin Velvet Oud,Perfume Capilar,ativo,13.68,46.9,F02,un,50
+BBS-1375,Barbour's,Cond Pfm Fin Coco Breeze,Perfume Capilar,ativo,11.39,47.9,F02,un,500
+BBS-1376,Barbour's,Cond Pfm Fin Peach Crush,Perfume Capilar,ativo,12.98,53.9,F02,un,100
+BBS-1377,Barbour's,Cond Pfm Fin Wild Berry,Perfume Capilar,ativo,15.11,50.9,F02,un,300
+BBS-1379,Barbour's,Cond Pfm Fin Amber Nights,Perfume Capilar,ativo,13.96,52.9,F02,un,300
+BBS-1381,Barbour's,Cond Pfm Fin Sweet Mango,Perfume Capilar,ativo,17.08,58.9,F02,un,300
+LSC-1382,Lescent,Deo Colonia No 32 Chic Paris - 25Ml,Fragrâncias,ativo,10.44,54.9,F02,un,100
+LSC-1383,Lescent,Deo Colonia No 33 Noir Lisboa - 25Ml,Fragrâncias,descontinuado,10.42,54.9,F02,un,2000
+LSC-1384,Lescent,Deo Colonia No 34 Intense Tóquio - 25Ml,Fragrâncias,ativo,18.87,110.9,F02,un,300
+LSC-1385,Lescent,Deo Colonia No 35 Bloom Havana - 25Ml,Fragrâncias,ativo,7.72,45.9,F02,un,100
+LSC-1386,Lescent,Deo Colonia No 36 Club Mônaco - 25Ml,Fragrâncias,ativo,10.26,62.9,F02,un,100
+LSC-1387,Lescent,Deo Colonia No 37 Elegance Sevilha - 25Ml,Fragrâncias,ativo,9.95,61.9,F02,un,100
+LSC-1389,Lescent,Deo Colonia No 38 Soleil Praga - 25Ml,Fragrâncias,ativo,14.77,93.9,F02,un,1000
+LSC-1391,Lescent,Deo Colonia No 39 Velvet Florença - 25Ml,Fragrâncias,descontinuado,18.14,105.9,F02,un,100
+LSC-1393,Lescent,Deo Colonia No 40 Legacy Cannes - 25Ml,Fragrâncias,ativo,10.42,59.9,F02,un,2000
+LSC-1394,Lescent,Deo Colonia No 41 Aura Zurique - 25Ml,Fragrâncias,ativo,8.62,58.9,F02,un,500
+LSC-1395,Lescent,Deo Colonia No 42 Chic Oslo - 25Ml,Fragrâncias,ativo,25.44,160.9,F02,un,500
+LSC-1396,Lescent,Deo Colonia No 43 Noir Marrakech - 25Ml,Fragrâncias,ativo,8.51,50.9,F02,un,500
+LSC-1398,Lescent,Deo Colonia No 44 Intense Istambul - 25Ml,Fragrâncias,descontinuado,20.03,107.9,F02,un,100
+LSC-1400,Lescent,Deo Colonia No 45 Bloom Bruges - 25Ml,Fragrâncias,ativo,7.99,46.9,F02,un,1000
+LSC-1402,Lescent,Deo Colonia No 46 Club Salzburgo - 25Ml,Fragrâncias,ativo,9.82,58.9,F02,un,300
+LSC-1404,Lescent,Deo Colonia No 47 Elegance Amalfi - 25Ml,Fragrâncias,ativo,8.57,53.9,F02,un,500
+LSC-1406,Lescent,Deo Colonia No 48 Soleil Kyoto - 25Ml,Fragrâncias,ativo,7.76,43.9,F02,un,100
+LSC-1407,Lescent,Deo Colonia No 49 Velvet Santorini - 25Ml,Fragrâncias,ativo,7.16,41.9,F02,un,300
+LSC-1408,Lescent,Deo Colonia No 50 Legacy Dubrovnik - 25Ml,Fragrâncias,ativo,21.03,123.9,F02,un,1000
+LSC-1410,Lescent,Deo Colonia No 51 Aura Porto - 25Ml,Fragrâncias,ativo,9.25,55.9,F02,un,500
+LSC-1411,Lescent,Deo Colonia No 32 Chic Paris - 100Ml,Fragrâncias,descontinuado,13.72,83.9,F02,un,500
+LSC-1412,Lescent,Deo Colonia No 33 Noir Lisboa - 100Ml,Fragrâncias,ativo,27.26,175.9,F02,un,300
+LSC-1413,Lescent,Deo Colonia No 34 Intense Tóquio - 100Ml,Fragrâncias,ativo,12.07,76.9,F02,un,100
+LSC-1415,Lescent,Deo Colonia No 35 Bloom Havana - 100Ml,Fragrâncias,descontinuado,15.41,92.9,F02,un,300
+LSC-1416,Lescent,Deo Colonia No 36 Club Mônaco - 100Ml,Fragrâncias,ativo,13.84,75.9,F02,un,500
+LSC-1418,Lescent,Deo Colonia No 37 Elegance Sevilha - 100Ml,Fragrâncias,ativo,13.15,86.9,F02,un,1000
+LSC-1420,Lescent,Deo Colonia No 38 Soleil Praga - 100Ml,Fragrâncias,ativo,33.73,196.9,F02,un,300
+LSC-1422,Lescent,Deo Colonia No 39 Velvet Florença - 100Ml,Fragrâncias,ativo,15.63,90.9,F02,un,300
+LSC-1423,Lescent,Deo Colonia No 40 Legacy Cannes - 100Ml,Fragrâncias,ativo,14.24,92.9,F02,un,500
+LSC-1425,Lescent,Deo Colonia No 41 Aura Zurique - 100Ml,Fragrâncias,ativo,8.94,59.9,F02,un,50
+LSC-1426,Lescent,Deo Colonia No 42 Chic Oslo - 100Ml,Fragrâncias,descontinuado,36.57,204.9,F02,un,100
+LSC-1428,Lescent,Deo Colonia No 43 Noir Marrakech - 100Ml,Fragrâncias,ativo,11.54,69.9,F02,un,100
+LSC-1429,Lescent,Deo Colonia No 5 - 100Ml,Fragrâncias,ativo,29.19,162.9,F02,un,100
+LSC-1431,Lescent,Deo Colonia No 8 - 100Ml,Fragrâncias,ativo,13.69,78.9,F02,un,100
+LSC-1433,Lescent,Deo Colonia No 11 - 100Ml,Fragrâncias,ativo,10.95,55.9,F02,un,100
+LSC-1435,Lescent,Deo Colonia No 22 - 100Ml,Fragrâncias,ativo,15.83,92.9,F02,un,500
+LSC-1437,Lescent,Deo Colonia No 24 - 100Ml,Fragrâncias,ativo,42.31,248.9,F02,un,300
+LSC-1439,Lescent,Deo Colonia No 25 - 100Ml,Fragrâncias,ativo,13.88,74.9,F02,un,500
+LSC-1441,Lescent,Deo Colonia No 27 - 100Ml,Fragrâncias,ativo,24.65,154.9,F02,un,300
+LSC-1442,Lescent,Deo Colonia No 28 - 100Ml,Fragrâncias,ativo,15.03,84.9,F02,un,100
+LSC-1444,Lescent,Deo Colonia No 29 - 100Ml,Fragrâncias,descontinuado,11.9,68.9,F02,un,500
+LSC-1445,Lescent,Deo Colonia No 30 - 100Ml,Fragrâncias,descontinuado,12.25,71.9,F02,un,500
+RTU-1446,Rituária,Colágeno Verisol 30 Sachês,Suplemento,descontinuado,16.73,74.9,F03,un,1000
+RTU-1448,Rituária,Ômega 3 Vegano 60 Caps,Suplemento,ativo,7.97,33.9,F03,un,500
+RTU-1449,Rituária,Melatonina Gotas 30Ml,Suplemento,ativo,24.28,98.9,F03,un,500
+RTU-1451,Rituária,Biotina 60 Caps,Suplemento,ativo,67.86,272.9,F03,un,300
+RTU-1452,Rituária,Ferro Quelato 60 Caps,Suplemento,ativo,12.14,45.9,F03,un,1000
+RTU-1453,Rituária,Zinco + Vitamina C 60 Caps,Suplemento,ativo,22.54,93.9,F03,un,500
+RTU-1455,Rituária,Whey Vegano Cacau 450G,Suplemento,ativo,16.78,75.9,F03,un,50
+RTU-1457,Rituária,Ácido Hialurônico 30 Caps,Suplemento,ativo,9.67,35.9,F03,un,300
+RTU-1458,Rituária,Probiótico 30 Caps,Suplemento,ativo,23.74,98.9,F03,un,300
+RTU-1459,Rituária,Ashwagandha 60 Caps,Suplemento,descontinuado,6.03,28.9,F03,un,300
+RTU-1460,Rituária,Cúrcuma + Pimenta 60 Caps,Suplemento,ativo,7.23,31.9,F03,un,100
+RTU-1461,Rituária,Vitamina K2 + D3 Gotas 20Ml,Suplemento,ativo,14.44,54.9,F03,un,1000
+RTU-1462,Rituária,Magnésio Dimalato 60 Caps,Suplemento,ativo,11.84,48.9,F03,un,500
+RTU-1463,Rituária,L-Teanina 60 Caps,Suplemento,ativo,9.94,46.9,F03,un,500
+RTU-1465,Rituária,Spirulina 120 Tabs,Suplemento,ativo,13.77,48.9,F03,un,500
+RTU-1466,Rituária,Greens & Superfood - Frutas Vermelhas,Superfoods,ativo,22.11,69.9,F03,un,300
+RTU-1467,Rituária,Creatina Sabor Limão 300G,Suplemento,ativo,12.14,47.9,F03,un,500
+RTU-1469,Rituária,Colágeno Tipo II 30 Caps,Suplemento,ativo,25.99,98.9,F03,un,300
+RTU-1471,Rituária,Formula Hair Nutri 60 Caps,Suplemento,ativo,16.82,74.9,F03,un,50
+RTU-1473,Rituária,Formula Sono 30 Caps,Suplemento,ativo,10.28,43.9,F03,un,500
+RTU-1475,Rituária,Formula Foco 60 Caps,Suplemento,ativo,21.6,94.9,F03,un,100
+RTU-1477,Rituária,Formula Imunidade Kids 60 Gummies,Suplemento,ativo,13.93,52.9,F03,un,500
+RTU-1479,Rituária,Coenzima Q10 150 Mg 60 Caps,Suplemento,ativo,25.41,106.9,F03,un,1000
+RTU-1480,Rituária,Formula 4 Mag 90 Caps,Suplemento,ativo,25.65,98.9,F03,un,1000
+RTU-1482,Rituária,Nutri Men 180 Caps,Suplemento,ativo,18.53,76.9,F03,un,100
+RTU-1483,Rituária,Formula Femme Nutri 180 Caps,Suplemento,ativo,29.26,126.9,F03,un,300
+RTU-1485,Rituária,Vitamina B12 Gotas 20Ml,Suplemento,ativo,29.45,117.9,F03,un,2000
+RTU-1487,Rituária,Picolinato Boost (Termog) 120 Caps,Suplemento,descontinuado,11.43,40.9,F03,un,500
+RTU-1489,Rituária,Prebiotica Fibras 400G,Suplemento,ativo,11.46,53.9,F03,un,500
+RTU-1491,Rituária,Mov Nutri 180 Caps,Suplemento,ativo,27.92,102.9,F03,un,1000
+RTU-1493,Rituária,Formula Brain + 180 Caps,Suplemento,descontinuado,45.63,208.9,F03,un,300
+RTU-1495,Rituária,Antioxi Nutri 180 Caps,Suplemento,ativo,42.39,172.9,F03,un,300
+RTU-1496,Rituária,Formula Dermactive 90 Caps,Suplemento,ativo,10.08,44.9,F03,un,300
+RTU-1497,Rituária,Fórmula Da Imunidade 300 G,Suplemento,ativo,12.9,54.9,F03,un,300
+RTU-1498,Rituária,Creatina 600 G,Suplemento,ativo,32.19,144.9,F03,un,500
+RTU-1500,Rituária,Magnésio Inositol 180 Caps,Suplemento,ativo,16.91,68.9,F03,un,500
+KSH-1501,Kokeshi,Sérum Vitamina C 30Ml,Serum,ativo,4.81,32.9,F05,un,500
+KSH-1502,Kokeshi,Sérum Niacinamida 10% 30Ml,Serum,ativo,5.06,33.9,F05,un,1000
+KSH-1504,Kokeshi,Sérum Retinol Noturno 30Ml,Serum,ativo,6.5,43.9,F05,un,500
+KSH-1506,Kokeshi,Sérum Ácido Hialurônico 30Ml,Serum,ativo,5.24,33.9,F05,un,300
+KSH-1508,Kokeshi,Tônico Facial De Arroz 200Ml,Skin Care,ativo,5.05,25.9,F05,un,2000
+KSH-1509,Kokeshi,Tônico Facial Pele De Porcelana 200Ml,Skin Care,ativo,4.17,21.9,F05,un,1000
+KSH-1510,Kokeshi,Máscara Facial Argila Rosa 100G,Skin Care,ativo,4.8,24.9,F05,un,300
+KSH-1511,Kokeshi,Máscara Facial Noturna Colageno 80G,Skin Care,ativo,4.42,21.9,F05,un,1000
+KSH-1512,Kokeshi,Protetor Solar Facial Fps 50 50G,Protetor Solar,ativo,15.91,57.9,F05,un,300
+KSH-1514,Kokeshi,Esfoliante Facial De Arroz 100G,Skin Care,ativo,5.67,26.9,F05,un,1000
+KSH-1515,Kokeshi,Lábios De Fada Hidratante Labial Morango 10G,Labial,ativo,3.96,25.9,F05,un,1000
+KSH-1516,Kokeshi,Lábios De Fada Hidratante Labial Cereja 10G,Labial,ativo,4.16,27.9,F05,un,50
+KSH-1518,Kokeshi,Lábios De Fada Hidratante Labial Pêssego 10G,Labial,ativo,3.94,25.9,F05,un,50
+KSH-1520,Kokeshi,Deo Bd Spl Cheiro De Rica N4 200Ml,Body Splash,ativo,9.0,41.9,F05,un,500
+KSH-1521,Kokeshi,Hidratante Corporal Cheiro De Rica N2 200Ml,Body Care,ativo,6.37,25.9,F05,un,100
+KSH-1523,Kokeshi,Shampoo Melixir 500Ml,Hair Care,ativo,3.94,14.9,F06,un,300
+KSH-1525,Kokeshi,Cond Melixir 500Ml,Hair Care,ativo,5.03,18.9,F06,un,500
+KSH-1527,Kokeshi,Cond Msc Nutritiva Melixir 400G,Hair Care,descontinuado,7.75,25.9,F06,un,1000
+KSH-1529,Kokeshi,Creme Gel Facial Gota De Colageno 90G,Skin Care,ativo,4.84,23.9,F05,un,500
+KSH-1530,Kokeshi,Geleia Facial De Vitamina C 100G,Skin Care,ativo,4.67,23.9,F05,un,100
+KSH-1531,Kokeshi,Óleo De Rosa Mosqueta 40Ml,Skin Care,descontinuado,4.7,23.9,F05,un,50
+KSH-1533,Kokeshi,Creme Para Olhos Olhos De Gueixa 15G,Skin Care,ativo,5.13,22.9,F05,un,300
+KSH-1534,Kokeshi,Sabonete Facial Gel De Arroz 190Ml,Skin Care,ativo,5.72,24.9,F05,un,50
+KSH-1535,Kokeshi,Água Micelar Pele De Porcelana 215Ml,Skin Care,ativo,5.88,28.9,F05,un,300
+KSH-1536,Kokeshi,Bruma Facial Chuva De Ozonio 120Ml,Skin Care,ativo,4.91,24.9,F05,un,100
+KSH-1537,Kokeshi,Balm Demaquilante Arroz 90G,Skin Care,ativo,4.81,21.9,F05,un,100
+KSH-1538,Kokeshi,Kit Skincare Pele De Porcelana 3 Itens,Skin Care,ativo,7.93,34.9,F05,un,500
+KSH-1539,Kokeshi,Serum Booster 60Ml,Serum,ativo,5.94,42.9,F05,un,300
+KSH-1540,Kokeshi,Creme Hidratante Para As Maos Cheiro De Rica,Body Care,ativo,5.38,25.9,F05,un,2000
+KSH-1542,Kokeshi,Hidratante Facial Pele Plena Fps 30 30G,Protetor Solar,ativo,16.29,65.9,F05,un,300
+KSH-1544,Kokeshi,Primer Facial Porcelana 30Ml,Skin Care,ativo,5.79,25.9,F05,un,500
+KSH-1546,Kokeshi,Patch Para Olhos Colageno 10 Pares,Skin Care,ativo,5.03,22.9,F05,un,1000
+BSM-1547,By Samia,Oleo Essencial De Gerânio 10 Ml,Aromaterapia,ativo,4.97,16.9,F04,cx 12 un,1
+BSM-1549,By Samia,Oleo Essencial De Ylang Ylang 10 Ml,Aromaterapia,ativo,9.71,37.9,F04,cx 12 un,1
+BSM-1550,By Samia,Oleo Essencial De Cravo 10 Ml,Aromaterapia,ativo,14.35,46.9,F04,cx 12 un,1
+BSM-1552,By Samia,Oleo Essencial De Canela 10 Ml,Aromaterapia,ativo,9.99,36.9,F04,cx 12 un,1
+BSM-1554,By Samia,Oleo Essencial De Limão Siciliano 10 Ml,Aromaterapia,ativo,12.61,41.9,F04,cx 12 un,1
+BSM-1556,By Samia,Oleo Essencial De Bergamota 10 Ml,Aromaterapia,ativo,5.65,16.9,F04,cx 12 un,1
+BSM-1557,By Samia,Oleo Essencial De Camomila 10 Ml,Aromaterapia,ativo,10.11,29.9,F04,cx 12 un,1
+BSM-1558,By Samia,Oleo Essencial De Patchouli 10 Ml,Aromaterapia,ativo,36.5,127.9,F04,cx 12 un,1
+BSM-1560,By Samia,Oleo Essencial De Cedro 10 Ml,Aromaterapia,ativo,26.75,96.9,F04,cx 12 un,1
+BSM-1562,By Samia,Oleo Essencial De Capim Limão 10 Ml,Aromaterapia,ativo,12.27,38.9,F04,cx 12 un,1
+BSM-1564,By Samia,Oleo Essencial De Palmarosa 10 Ml,Aromaterapia,ativo,35.2,126.9,F04,cx 12 un,1
+BSM-1565,By Samia,Oleo Essencial De Manjericão 10 Ml,Aromaterapia,ativo,28.0,105.9,F04,cx 12 un,1
+BSM-1567,By Samia,Oleo Essencial De Lavanda Francesa 10 Ml,Aromaterapia,descontinuado,6.17,22.9,F04,cx 12 un,1
+BSM-1569,By Samia,Oleo Essencial De Grapefruit 10 Ml,Aromaterapia,ativo,6.0,19.9,F04,cx 12 un,1
+BSM-1570,By Samia,Oleo Essencial De Olíbano 10 Ml,Aromaterapia,descontinuado,13.54,43.9,F04,cx 12 un,1
+BSM-1571,By Samia,Oleo Essencial De Mirra 10 Ml,Aromaterapia,ativo,4.12,14.9,F04,cx 12 un,1
+BSM-1572,By Samia,Oleo Essencial De Vetiver 10 Ml,Aromaterapia,ativo,9.29,32.9,F04,cx 12 un,1
+BSM-1573,By Samia,Oleo Essencial De Cipreste 10 Ml,Aromaterapia,ativo,11.5,36.9,F04,cx 12 un,1
+BSM-1574,By Samia,Oleo Vegetal De Coco 100 Ml,Aromaterapia,ativo,8.08,27.9,F04,cx 12 un,1
+BSM-1575,By Samia,Oleo Vegetal De Jojoba 100 Ml,Aromaterapia,descontinuado,16.59,59.9,F04,cx 12 un,1
+BSM-1576,By Samia,Oleo Vegetal De Argan 100 Ml,Aromaterapia,descontinuado,21.31,75.9,F04,cx 12 un,1
+BSM-1577,By Samia,Oleo Vegetal De Semente De Uva 100 Ml,Aromaterapia,ativo,19.09,69.9,F04,cx 12 un,1
+BSM-1579,By Samia,Oleo Vegetal De Abacate 100 Ml,Aromaterapia,ativo,14.04,56.9,F04,cx 12 un,1
+BSM-1581,By Samia,Roll On Foco 10 Ml,Aromaterapia,descontinuado,39.87,136.9,F04,cx 12 un,1
+BSM-1583,By Samia,Roll On Sono 10 Ml,Aromaterapia,ativo,10.77,38.9,F04,cx 12 un,1
+BSM-1585,By Samia,Roll On Energia 10 Ml,Aromaterapia,ativo,9.4,37.9,F04,cx 12 un,1
+YNZ-1587,Yenzah,Cronograma Capilar 3 Em 1 Máscara 1Kg,Hair Care,ativo,9.53,32.9,F06,un,50
+YNZ-1589,Yenzah,Cronograma Capilar 3 Em 1 Shampoo 300Ml,Hair Care,ativo,7.3,23.9,F06,un,100
+YNZ-1591,Yenzah,Cronograma Capilar 3 Em 1 Condicionador 300Ml,Hair Care,descontinuado,9.01,29.9,F06,un,1000
+YNZ-1593,Yenzah,Máscara Cond. Cronograma Capilar 3 Em 1 Hidratação 480G,Hair Care,ativo,6.32,21.9,F06,un,1000
+YNZ-1594,Yenzah,Máscara Cond. Cronograma Capilar 3 Em 1 Reconstrução 480G,Hair Care,ativo,7.6,29.9,F06,un,100
+YNZ-1596,Yenzah,Máscara Cond. Cronograma Capilar 3 Em 1 Nutrição 480G,Hair Care,ativo,6.2,23.9,F06,un,1000
+YNZ-1598,Yenzah,Gelatina Capilar Bonita Por Natureza Cachos 500G,Hair Care,descontinuado,6.38,22.9,F06,un,100
+YNZ-1600,Yenzah,Óleo Capilar Bonita Por Natureza 60Ml,Hair Care,ativo,6.79,21.9,F06,un,100
+YNZ-1602,Yenzah,Shampoo Bonita Por Natureza Lisos 500Ml,Hair Care,ativo,5.82,20.9,F06,un,100
+YNZ-1604,Yenzah,Condicionador Bonita Por Natureza Lisos 500Ml,Hair Care,ativo,7.46,26.9,F06,un,300
+YNZ-1605,Yenzah,Creme Cond. De Pentear Bonita Por Natureza Crespos 500Ml,Hair Care,ativo,8.48,29.9,F06,un,100
+YNZ-1606,Yenzah,Shampoo Bonita Por Natureza Crespos 500Ml,Hair Care,ativo,7.25,21.9,F06,un,100
+YNZ-1608,Yenzah,Condicionador Bonita Por Natureza Crespos 500Ml,Hair Care,ativo,6.96,26.9,F06,un,500
+YNZ-1609,Yenzah,Sou Mais Cachos Gelatina 365Ml,Hair Care,ativo,6.51,19.9,F06,un,100
+YNZ-1611,Yenzah,Sou Mais Cachos Shampoo 300Ml,Hair Care,ativo,6.52,20.9,F06,un,500
+YNZ-1612,Yenzah,Sou Mais Cachos Condicionador 300Ml,Hair Care,ativo,7.54,27.9,F06,un,300
+YNZ-1614,Yenzah,Leave-In Cronograma Capilar 3 Em 1 480Ml,Hair Care,ativo,7.39,27.9,F06,un,500
+YNZ-1616,Yenzah,Spray Day After Cachos 250Ml,Hair Care,ativo,8.29,27.9,F06,un,1000
+YNZ-1617,Yenzah,Ativador De Cachos 2A A 3C Bonita Por Natureza 500Ml,Hair Care,ativo,6.64,21.9,F06,un,1000
+YNZ-1618,Yenzah,Kit Cronograma Capilar 3 Em 1 Completo,Hair Care,ativo,13.55,49.9,F06,un,1000
+YNZ-1619,Yenzah,Máscara Matizadora Yenzah 480G,Hair Care,ativo,7.16,24.9,F06,un,300
+AUA-1621,Auá,Deo Natural Roll On Alecrim 55Ml,Desodorante,descontinuado,5.39,39.9,F04,cx 12 un,1
+AUA-1622,Auá,Deo Natural Roll On Capim Limão 55Ml,Desodorante,ativo,5.71,35.9,F04,cx 12 un,1
+AUA-1624,Auá,Deo Natural Roll On Sem Perfume 55Ml,Desodorante,ativo,5.8,36.9,F04,cx 12 un,1
+AUA-1625,Auá,Sabonete Natural Argila Verde 90G,Body Care,ativo,36.36,136.9,F04,cx 12 un,1
+AUA-1627,Auá,Sabonete Natural Aveia 90G,Body Care,ativo,28.97,116.9,F04,cx 12 un,1
+AUA-1629,Auá,Shampoo Sólido Alecrim 70G,Body Care,ativo,38.19,146.9,F04,cx 12 un,1
+AUA-1631,Auá,Condicionador Sólido Karité 70G,Body Care,descontinuado,26.47,117.9,F04,cx 12 un,1
+AUA-1633,Auá,Creme Facial Vitamina C Natural 50G,Skin Care,ativo,41.17,211.9,F04,cx 12 un,1
+AUA-1634,Auá,Tônico Facial Hamamélis 120Ml,Skin Care,ativo,6.93,31.9,F04,cx 12 un,1
+AUA-1636,Auá,Óleo Corporal Pós-Banho 120Ml,Body Care,ativo,26.78,117.9,F04,cx 12 un,1
+AUA-1637,Auá,Esfoliante Corporal Café 200G,Body Care,ativo,30.85,120.9,F04,cx 12 un,1
+AUA-1638,Auá,Balm Labial Natural 10G,Skin Care,ativo,44.22,233.9,F04,cx 12 un,1
