@@ -1,0 +1,8 @@
+.venv/
+notebooks/
+tests/
+__pycache__/
+.pytest_cache/
+*.pyc
+server.log
+RESUMO.md

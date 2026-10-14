@@ -142,6 +142,8 @@ ul.clean{margin:6px 0;padding-left:18px}ul.clean li{margin:3px 0}
   </div>
   <div class="f"><label>Compras do horizonte cobrem a demanda até</label>
     <select id="p_cobertura_ate"><option value="horizonte">o fim do horizonte</option><option value="horizonte_lt">o fim do horizonte + lead time</option></select></div>
+  <div class="f"><label>Quando o orçamento não dá, cortar primeiro</label>
+    <select id="p_criterio_corte"><option value="margem">o que protege menos margem por R$ (padrão)</option><option value="abc">itens C, depois B (protege a classe A)</option></select></div>
   <div class="row2">
     <div class="f"><label>Excesso acima de (dias)</label><input id="p_dias_excesso" type="number" step="10"></div>
     <div class="f"><label>Liquidar acima de (dias)</label><input id="p_giro_max_dias" type="number" step="30"></div>
@@ -283,7 +285,7 @@ const esc = s => String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>'
 function status(t, busy){ const e=$('#status'); e.textContent=t; e.classList.toggle('busy',!!busy); }
 
 // ---------------- parâmetros ----------------
-const CAMPOS = ['orcamento','custo_capital_aa','armazenagem_am','desconto_max_liquidacao','inicio_horizonte','dias_horizonte','modo_servico','nivel_servico_uniforme','cobertura_pedido_dias','janela_base_dias','cobertura_ate','dias_excesso','giro_max_dias','lift_liquidacao','janela_liquidacao_dias'];
+const CAMPOS = ['orcamento','custo_capital_aa','armazenagem_am','desconto_max_liquidacao','inicio_horizonte','dias_horizonte','modo_servico','nivel_servico_uniforme','cobertura_pedido_dias','janela_base_dias','cobertura_ate','criterio_corte','dias_excesso','giro_max_dias','lift_liquidacao','janela_liquidacao_dias'];
 function preencher(p){
   CAMPOS.forEach(k=>{ const el=$('#p_'+k); if(!el) return; let v=p[k]; if(el.dataset.pct!==undefined) v=+(v*100).toFixed(3); el.value=v; });
   ['A','B','C'].forEach(c=> $('#ns_'+c).value = +(p.nivel_servico_classe[c]*100).toFixed(2));

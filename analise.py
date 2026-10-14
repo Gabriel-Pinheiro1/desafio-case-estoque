@@ -58,7 +58,8 @@ PARAMS_PADRAO: dict[str, Any] = {
         {"nome": "Natal", "inicio": "2026-12-01", "fim": "2026-12-22", "multiplicador": None},
     ],
     "cobertura_pedido_dias": 30,       # quanto cada pedido cobre além do lead time
-    "cobertura_ate": "horizonte",   # compras da janela cobrem até o fim do horizonte + lead time
+    "cobertura_ate": "horizonte",
+    "criterio_corte": "margem",        # "margem" (margem protegida por R$) ou "abc" (classe A primeiro, depois margem)   # compras da janela cobrem até o fim do horizonte + lead time
     "janela_base_dias": 56,            # janela para medir a demanda atual
     "dias_excesso": 180,               # acima disso, é capital parado
     "giro_max_dias": 365,              # acima disso, liquidar (risco de validade)
@@ -798,7 +799,11 @@ def calcular(base: dict, params: dict | None = None) -> dict:
     custo_politica = sum(l[3] for l in lotes)
     economicos = [l for l in lotes if l[2] > 0]
     custo_economico = sum(l[3] for l in economicos)
-    ordem = sorted(economicos, key=lambda l: (-l[2] / l[3], l[0], l[1]))
+    rank_cl = {"A": 0, "B": 1, "C": 2}
+    if p.get("criterio_corte") == "abc":
+        ordem = sorted(economicos, key=lambda l: (rank_cl.get(classe[plano.pedidos[l[0]][0]], 3), -l[2] / l[3], l[0], l[1]))
+    else:
+        ordem = sorted(economicos, key=lambda l: (-l[2] / l[3], l[0], l[1]))
     orc = p["orcamento"]
     gasto = 0.0
     n_lotes = {}
@@ -814,10 +819,10 @@ def calcular(base: dict, params: dict | None = None) -> dict:
         if gasto + cst <= orc + 1e-6:
             gasto += cst
             n_lotes[k] = j + 1
-            corte_score = val / cst
+            corte_score = val / cst if corte_score is None else min(corte_score, val / cst)
         else:
-            if primeiro_fora is None:
-                primeiro_fora = val / cst
+            if primeiro_fora is None or p.get("criterio_corte") == "abc":
+                primeiro_fora = val / cst if primeiro_fora is None else max(primeiro_fora, val / cst)
             bloqueado.add(k)
     lote_val = {(k, j): (val, cst) for (k, j, val, cst) in lotes}
     # curva de retorno do orçamento: lotes na ordem de prioridade (respeitando a sequência por pedido)
@@ -1128,6 +1133,10 @@ def calcular(base: dict, params: dict | None = None) -> dict:
         "por_marca": _por_grupo(sk, valor, parado, "marca"),
         "por_categoria": _por_grupo(sk, valor, parado, "categoria"),
     }
+    if p.get("criterio_corte") == "abc":
+        resultado["criterio"] = ("Critério alternativo ativo: classe A primeiro. Os lotes dos itens A entram antes de qualquer B, e os B antes dos C; "
+                                 "dentro de cada classe, a ordem é a margem protegida por R$. Protege a experiência nos itens que mais vendem, "
+                                 "ao custo de menos margem total que o critério padrão. ") + resultado["criterio"]
     resultado["recomendacoes"] = recomendacoes(resultado)
     return resultado
 
