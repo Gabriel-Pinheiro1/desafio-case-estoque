@@ -1132,6 +1132,9 @@ def calcular(base: dict, params: dict | None = None) -> dict:
                              "receita": round(float((f[:, k] * preco).sum()), 0)} for k in range(t0, t1 + 1)],
         "por_marca": _por_grupo(sk, valor, parado, "marca"),
         "por_categoria": _por_grupo(sk, valor, parado, "categoria"),
+        # receita em risco projetada no horizonte por SKU, com o plano final (usada pelo agente de IA)
+        "risco_por_sku": {sk["sku"].iloc[i]: round(float(rup_proj[i] * preco[i]), 0)
+                          for i in range(n) if rup_proj[i] * preco[i] >= 1},
     }
     if p.get("criterio_corte") == "abc":
         resultado["criterio"] = ("Critério alternativo ativo: classe A primeiro. Os lotes dos itens A entram antes de qualquer B, e os B antes dos C; "

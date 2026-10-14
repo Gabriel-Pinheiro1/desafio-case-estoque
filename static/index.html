@@ -93,6 +93,33 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 h4{margin:14px 0 6px;font-size:13px}
 ul.clean{margin:6px 0;padding-left:18px}ul.clean li{margin:3px 0}
 .upl input[type=file]{font-size:11.5px;width:100%}
+/* agente de IA */
+.tab .ia{background:var(--accent);color:#fff;border-radius:99px;font-size:10px;padding:1px 6px;margin-left:5px;vertical-align:1px;letter-spacing:.4px}
+.ag{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:14px;align-items:start}
+@media(max-width:1200px){.ag{grid-template-columns:1fr}}
+.chat{display:flex;flex-direction:column;gap:12px;min-height:220px;max-height:66vh;overflow:auto;padding:4px 2px 8px}
+.msg{padding:11px 15px;max-width:92%;font-size:13.5px}
+.msg.u{align-self:flex-end;background:var(--ink);color:#fff;border-radius:14px 14px 4px 14px;max-width:72%}
+.msg.a{align-self:flex-start;background:#fcfbfa;border:1px solid var(--line);border-radius:14px 14px 14px 4px}
+.msg.a p{margin:0 0 7px}.msg.a ul{margin:4px 0 8px;padding-left:18px}.msg.a li{margin:2px 0}
+.msg.err{background:var(--bad-soft);color:#7a2219;border:0}
+.msg.wait{color:var(--muted)}
+.msg.wait::before{content:"";display:inline-block;width:9px;height:9px;border-radius:99px;background:var(--accent);margin-right:8px;animation:pulse 1s infinite}
+.chips{display:flex;flex-direction:column;gap:6px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 11px;cursor:pointer;font:inherit;font-size:12.8px;text-align:left;color:var(--ink)}
+.chip:hover{border-color:var(--accent);background:var(--accent-soft)}
+.ask{display:flex;gap:8px;margin-top:10px}
+.ask textarea{flex:1;border:1px solid var(--line);border-radius:10px;padding:9px 11px;font:inherit;resize:vertical;min-height:44px;background:#fcfbfa}
+.ask textarea:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+.cen{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;margin:10px 0 4px;background:#fff}
+.cen .kv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:8px 0 2px}
+.cen .kv div{font-size:11.5px;color:var(--muted)}.cen .kv b{display:block;font-size:14px;color:var(--ink)}
+.oc{border:1px solid var(--line);border-left:4px solid var(--warn);border-radius:10px;padding:10px 12px;margin:10px 0 4px;background:#fff}
+.oc table{font-size:12px}
+.trace{margin-top:8px;font-size:12px;color:var(--muted)}
+.trace summary{cursor:pointer}
+.trace code{font-size:11.5px;background:#efece8;border-radius:5px;padding:1px 5px;color:var(--ink)}
+.trace li{margin:3px 0}
 </style>
 </head>
 <body>
@@ -177,6 +204,7 @@ ul.clean{margin:6px 0;padding-left:18px}ul.clean li{margin:3px 0}
 <main>
   <div class="tabs" id="tabs">
     <div class="tab on" data-s="exec">Visão executiva</div>
+    <div class="tab" data-s="agente">Agente de IA<span class="ia">IA</span></div>
     <div class="tab" data-s="plano">Plano de compras</div>
     <div class="tab" data-s="parado">Estoque parado</div>
     <div class="tab" data-s="servico">Nível de serviço</div>
@@ -195,6 +223,43 @@ ul.clean{margin:6px 0;padding-left:18px}ul.clean li{margin:3px 0}
     <div class="grid k2" style="margin-top:14px">
       <div class="card"><h2>Receita mensal e receita perdida por ruptura</h2><div class="sub">Receita perdida estimada pela demanda corrigida nos dias sem estoque</div><div class="chart"><canvas id="cMes"></canvas></div></div>
       <div class="card"><h2>Demanda prevista no horizonte</h2><div class="sub">Unidades por dia (base corrigida x multiplicadores de campanha)</div><div class="chart"><canvas id="cPrev"></canvas></div></div>
+    </div>
+  </section>
+
+  <!-- AGENTE DE IA -->
+  <section class="sec" id="s_agente">
+    <div class="ag">
+      <div class="card">
+        <div class="toolbar"><h2 style="margin-right:auto">Agente de compras</h2><span id="agStatus" class="pill p-mut">verificando…</span>
+          <button class="btn alt sm" id="agLimpar">Limpar conversa</button></div>
+        <div class="sub">Pergunte em português. O agente recalcula o plano com o mesmo motor da tela, consulta SKUs e fornecedores e monta rascunhos de ordem de compra. Todo número da resposta vem de uma ferramenta, e a lista das ferramentas usadas aparece embaixo de cada resposta.</div>
+        <div class="chat" id="agChat"><div class="msg a">Posso simular cenários (orçamento, nível de serviço, campanhas), explicar por que um SKU saiu do plano, mostrar o lead time e os pedidos em aberto de um fornecedor e montar o rascunho da ordem de compra. Comece por uma das perguntas ao lado.</div></div>
+        <div class="ask"><textarea id="agInput" maxlength="1000" placeholder="Ex.: e se o orçamento cair para R$ 1,5 mi?"></textarea><button class="btn acc" id="agEnviar">Perguntar</button></div>
+        <div class="hint">Enter envia; Shift+Enter quebra a linha. O agente usa os parâmetros do painel e os dados enviados, se houver.</div>
+      </div>
+      <div>
+        <div class="card"><h2>Perguntas-exemplo</h2><div class="sub">Clique para perguntar</div>
+          <div class="chips" id="agEx">
+            <button class="chip">E se o orçamento cair para R$ 1,5 mi?</button>
+            <button class="chip">Quanto custa subir o nível de serviço da classe A para 99,5%?</button>
+            <button class="chip">Com R$ 1,37 mi, quais SKUs saem do plano e quanto de receita fica em risco?</button>
+            <button class="chip">Monte o pedido do fornecedor F02 para a primeira semana do horizonte.</button>
+            <button class="chip">Como está o lead time do F05 e os pedidos em aberto dele?</button>
+            <button class="chip">Escreva um memorando curto para a diretoria pedindo mais orçamento.</button>
+          </div></div>
+        <div class="card" style="margin-top:14px"><h2>Como ele trabalha</h2>
+          <ul class="clean small">
+            <li><b>recalcular_plano</b>: roda o plano com os parâmetros alterados e compara com o atual.</li>
+            <li><b>comparar_cenarios</b>: o que saiu, entrou ou foi reduzido, com R$ e receita em risco.</li>
+            <li><b>consultar_sku</b>: ficha do SKU e o motivo do status no plano.</li>
+            <li><b>consultar_fornecedor</b>: lead time e pedidos em aberto.</li>
+            <li><b>estoque_parado</b>: capital parado e o que liquidar.</li>
+            <li><b>rascunho_ordem_compra</b>: OC por fornecedor, na unidade de compra e com MOQ.</li>
+          </ul>
+          <div class="warnbox">Ordem de compra é sempre <b>rascunho pendente de aprovação humana</b>. O agente não envia nada a fornecedor nem ao ERP.</div>
+          <div class="hint" id="agLimites"></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -558,6 +623,90 @@ $('#btnOrig').onclick=()=>{ S.base=null; $('#fonte').textContent='dados originai
 $('#fStatus').onchange=tabelaPlano; $('#fBusca').oninput=tabelaPlano; $('#fTipo').onchange=tabelaParado;
 $('#btnCsv').onclick=()=>baixarCSV('plano_compras.csv', S.res.plano.filter(l=>l.qtd_un>0), ['sku','descricao','marca','fornecedor','classe','nivel_servico','data_emissao','data_chegada','unidade_compra','moq','qtd_compra','qtd_un','custo','margem_por_real','urgente','status']);
 $('#btnCsvParado').onclick=()=>baixarCSV('estoque_parado.csv', S.res.parado, ['sku','descricao','marca','categoria','status','tipo','estoque','demanda_dia','cobertura_dias','excesso_un','excesso_custo','liquidar_un','preco_liquidacao','valor_recuperavel','sem_demanda_un','acao']);
+
+// ---------------- agente de IA ----------------
+S.chat = []; S.agLigado = false;
+function md(t){
+  const linhas = esc(t||'').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').split(/\n/);
+  let h='', lista=false;
+  for(const l of linhas){
+    const m = l.match(/^\s*[-•*]\s+(.*)/);
+    if(m){ if(!lista){h+='<ul>'; lista=true;} h+='<li>'+m[1]+'</li>'; continue; }
+    if(lista){h+='</ul>'; lista=false;}
+    if(l.trim()) h+='<p>'+l+'</p>';
+  }
+  return h+(lista?'</ul>':'');
+}
+const ROT = {orcamento:'Orçamento', custo_capital_aa:'Capital a.a.', armazenagem_am:'Armazenagem a.m.', desconto_max_liquidacao:'Desconto de liquidação',
+  inicio_horizonte:'Início do horizonte', dias_horizonte:'Dias do horizonte', modo_servico:'Política de serviço', nivel_servico_uniforme:'Nível uniforme',
+  nivel_servico_classe:'Nível por classe', cobertura_pedido_dias:'Cobertura por pedido', cobertura_ate:'Cobrir até', criterio_corte:'Critério de corte',
+  dias_excesso:'Excesso acima de', giro_max_dias:'Liquidar acima de', lift_liquidacao:'Aumento na liquidação', janela_liquidacao_dias:'Prazo da liquidação', campanhas:'Campanhas'};
+function fmtMud(k,v){
+  if(k==='orcamento') return mil(v);
+  if(k==='nivel_servico_classe') return Object.entries(v).map(([c,x])=>c+' '+pct(x,1)).join(', ');
+  if(['custo_capital_aa','armazenagem_am','desconto_max_liquidacao','nivel_servico_uniforme'].includes(k)) return pct(v,1);
+  if(k==='campanhas') return v.map(c=>`${esc(c.nome)} ${dt(c.inicio).slice(0,5)}–${dt(c.fim).slice(0,5)}${c.multiplicador?' '+num(c.multiplicador,2)+'x':''}`).join('; ');
+  return esc(v);
+}
+function cenarioHTML(c, i){
+  const a=c.antes, d=c.depois;
+  const kv=(lab,x,y,f)=>`<div>${lab}<b>${f(y)}</b><span class="small">antes ${f(x)}</span></div>`;
+  return `<div class="cen"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="pill p-blue">Cenário ${esc(c.id)}</span>
+    <span class="small">${Object.entries(c.mudancas).map(([k,v])=>esc(ROT[k]||k)+': <b>'+fmtMud(k,v)+'</b>').join(' · ')}</span>
+    <button class="btn sm acc" style="margin-left:auto" data-aplicar="${i}">Aplicar este cenário</button></div>
+    <div class="kv">${kv('Plano',a.plano_custo,d.plano_custo,mil)}${kv('Pedidos',a.plano_pedidos,d.plano_pedidos,num)}${kv('Receita em risco',a.receita_em_risco_horizonte,d.receita_em_risco_horizonte,mil)}${kv('Fill rate projetado',a.fill_rate_projetado,d.fill_rate_projetado,x=>pct(x,1))}</div></div>`;
+}
+function ordemHTML(o, i){
+  const dep=o.pedidos_do_fornecedor_depois_da_janela;
+  return `<div class="oc"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><b>${esc(o.numero)}</b><span class="pill p-warn">Rascunho · ${esc(o.status)}</span>
+    <span class="small muted">${esc(o.fornecedor)} · ${esc(o.nome_fornecedor)} · emissão de ${dt(o.janela_emissao.de)} a ${dt(o.janela_emissao.ate)}</span>
+    <button class="btn sm alt" style="margin-left:auto" data-oc="${i}">Baixar rascunho (CSV)</button></div>
+    ${o.aviso_janela?`<div class="note">${esc(o.aviso_janela).replace(/(\d{4})-(\d{2})-(\d{2})/g,'$3/$2/$1')}</div>`:''}
+    ${o.itens.length? `<div class="tbl wr" style="max-height:300px;margin-top:8px"><table><thead><tr><th>SKU</th><th>Produto</th><th class="n">Qtd</th><th>Unid.</th><th class="n">MOQ</th><th class="n">Lotes</th><th class="n">Custo</th><th>Emitir</th><th>Chega ~</th></tr></thead><tbody>`+
+      o.itens.map(x=>`<tr><td>${esc(x.sku)}</td><td>${esc(x.descricao)}${x.urgente?' <span class="pill p-bad">urgente</span>':''}</td><td class="n"><b>${num(x.quantidade)}</b></td><td>${esc(x.unidade_compra)}</td><td class="n">${num(x.moq)}</td><td class="n">${num(x.lotes_de_moq,0)}</td><td class="n">${brl(x.custo,2)}</td><td>${dt(x.data_emissao)}</td><td>${dt(x.chegada_prevista)}</td></tr>`).join('')+
+      `</tbody></table></div><div class="small" style="margin-top:6px">Total: <b>${brl(o.total_custo,2)}</b> em ${o.total_itens} itens. Depois desta janela, o plano ainda tem ${dep.qtd} pedidos deste fornecedor (${mil(dep.custo)}).</div>` : '<div class="small muted" style="margin-top:6px">Nenhum pedido deste fornecedor na janela.</div>'}
+    <div class="hint">${esc(o.observacao)}</div></div>`;
+}
+function respostaHTML(j){
+  const fer = j.ferramentas||[];
+  const trace = fer.length? `<details class="trace"><summary>Ferramentas usadas (${fer.length}, em ${j.passos} passos): ${[...new Set(fer.map(f=>f.nome))].map(n=>'<code>'+esc(n)+'</code>').join(' ')}</summary><ul class="clean">`+
+     fer.map(f=>`<li><span class="pill ${f.ok?'p-ok':'p-bad'}">${f.ok?'ok':'erro'}</span> <code>${esc(f.nome)}(${esc(JSON.stringify(f.args||{}))})</code> → ${esc(f.resumo)}</li>`).join('')+'</ul></details>'
+     : '<div class="trace">Nenhuma ferramenta usada nesta resposta, então ela não traz números do plano.</div>';
+  return md(j.resposta) + (j.cenarios||[]).map(cenarioHTML).join('') + (j.ordens||[]).map(ordemHTML).join('') + trace;
+}
+function bolha(cls, html){ const d=document.createElement('div'); d.className='msg '+cls; d.innerHTML=html; $('#agChat').appendChild(d); $('#agChat').scrollTop=1e9; return d; }
+async function perguntar(q){
+  q=(q||'').trim(); if(!q) return;
+  if(!S.agLigado){ bolha('a err', 'O agente está desligado neste servidor (falta a variável AI_API_KEY). As outras abas funcionam normalmente.'); return; }
+  $('#agInput').value=''; bolha('u', esc(q));
+  const w = bolha('a wait','consultando o plano…'); $('#agEnviar').disabled=true;
+  try{
+    const r = await fetch('/api/agente',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({pergunta:q, historico:S.chat.slice(-10), params:lerParams(), base:S.base})});
+    const j = await r.json().catch(()=>({ok:false, erro:'Resposta inválida do servidor (HTTP '+r.status+').'}));
+    if(!r.ok) throw new Error(j.detail||j.erro||r.statusText);
+    if(!j.ok) throw new Error(j.erro||'erro desconhecido');
+    w.className='msg a'; w.innerHTML=respostaHTML(j);
+    w.querySelectorAll('[data-aplicar]').forEach(b=>b.onclick=()=>{ const c=j.cenarios[+b.dataset.aplicar];
+      preencher(c.params); recalcular(); b.textContent='Aplicado no painel'; b.disabled=true; });
+    w.querySelectorAll('[data-oc]').forEach(b=>b.onclick=()=>{ const o=j.ordens[+b.dataset.oc];
+      baixarCSV(o.numero+'.csv', o.itens.map(x=>({...x, numero:o.numero, fornecedor:o.fornecedor, status:o.status})), ['numero','status','fornecedor','sku','descricao','quantidade','unidade_compra','moq','lotes_de_moq','unidades','custo','data_emissao','chegada_prevista']); });
+    const nota = (j.cenarios||[]).length? '\n\n(Cenários calculados nesta resposta: '+j.cenarios.map(c=>c.id+' = '+JSON.stringify(c.mudancas)).join('; ')+'. Para usar de novo, recalcule com as mesmas mudanças.)' : '';
+    S.chat.push({role:'user',content:q},{role:'assistant',content:(j.resposta||'')+nota});
+  }catch(e){ w.className='msg a err'; w.textContent='Erro: '+e.message; }
+  finally{ $('#agEnviar').disabled=false; $('#agChat').scrollTop=1e9; }
+}
+async function statusAgente(){
+  try{ const j = await (await fetch('/api/agente/status')).json(); S.agLigado=j.ligado;
+    $('#agStatus').className='pill '+(j.ligado?'p-ok':'p-mut'); $('#agStatus').textContent = j.ligado? 'ligado · modelo '+j.modelo : 'desligado (sem AI_API_KEY)';
+    $('#agLimites').textContent = `Limites: até ${j.limites.passos} passos por pergunta, ${j.limites.chamadas_por_minuto} perguntas por minuto por IP e ${j.limites.pergunta_max} caracteres por pergunta.`;
+  }catch(e){ $('#agStatus').textContent='indisponível'; }
+}
+document.querySelectorAll('#agEx .chip').forEach(b=>b.onclick=()=>perguntar(b.textContent));
+$('#agEnviar').onclick=()=>perguntar($('#agInput').value);
+$('#agInput').addEventListener('keydown',e=>{ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); perguntar($('#agInput').value); } });
+$('#agLimpar').onclick=()=>{ S.chat=[]; [...$('#agChat').children].slice(1).forEach(x=>x.remove()); };
+statusAgente();
 
 (async function(){
   status('carregando…', true);

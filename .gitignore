@@ -5,3 +5,4 @@ __pycache__/
 notebooks/*.pkl
 server.log
 *.pdf
+.env
