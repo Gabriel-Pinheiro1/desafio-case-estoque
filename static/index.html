@@ -33,7 +33,7 @@ aside h3:first-child{margin-top:0}
 .camp{border:1px solid var(--line);border-radius:10px;padding:8px;margin-bottom:8px;background:#fcfbfa}
 .camp .row3 input{width:100%}
 .btn{border:0;border-radius:9px;padding:8px 12px;font:inherit;font-weight:600;cursor:pointer;background:var(--ink);color:#fff}
-.btn.sec{background:#efece8;color:var(--ink)}
+.btn.alt{background:#efece8;color:var(--ink)}
 .btn.acc{background:var(--accent)}
 .btn.sm{padding:4px 8px;font-size:12px}
 .hint{font-size:11.5px;color:var(--muted);margin:2px 0 8px}
@@ -132,7 +132,7 @@ ul.clean{margin:6px 0;padding-left:18px}ul.clean li{margin:3px 0}
 
   <h3>Calendário comercial</h3>
   <div id="campanhas"></div>
-  <button class="btn sec sm" id="addCamp">+ campanha</button>
+  <button class="btn alt sm" id="addCamp">+ campanha</button>
   <div class="hint">Multiplicador em branco: usa o estimado no mesmo período do ano anterior.</div>
 
   <h3>Regras do plano</h3>
@@ -154,7 +154,7 @@ ul.clean{margin:6px 0;padding-left:18px}ul.clean li{margin:3px 0}
   </div>
   <div style="display:flex;gap:8px;margin-top:6px">
     <button class="btn acc" id="btnCalc">Recalcular</button>
-    <button class="btn sec" id="btnReset">Restaurar padrão</button>
+    <button class="btn alt" id="btnReset">Restaurar padrão</button>
   </div>
   <div class="hint">Toda mudança recalcula sozinha em cerca de 1 segundo.</div>
 
@@ -168,7 +168,7 @@ ul.clean{margin:6px 0;padding-left:18px}ul.clean li{margin:3px 0}
   </div>
   <div style="display:flex;gap:8px">
     <button class="btn" id="btnUpload">Enviar e recalcular</button>
-    <button class="btn sec" id="btnOrig">Dados originais</button>
+    <button class="btn alt" id="btnOrig">Dados originais</button>
   </div>
   <div class="hint">Envie só os arquivos que mudaram; os demais vêm dos originais. O navegador compacta cada arquivo em gzip antes de enviar: 4,6 MB viram cerca de 1 MB, abaixo do limite de 4,5 MB por requisição da Vercel. O servidor devolve uma base pré-agregada, que fica no navegador e acompanha cada recálculo, porque o servidor não guarda estado.</div>
   <div id="uplMsg" class="small"></div>
@@ -227,7 +227,7 @@ ul.clean{margin:6px 0;padding-left:18px}ul.clean li{margin:3px 0}
     <div class="card" style="margin-top:14px">
       <div class="toolbar"><h2 style="margin-right:auto">Itens parados e ação recomendada</h2>
         <select id="fTipo"><option value="">Todos</option><option value="descontinuado">Descontinuados</option><option value="excesso">Excesso (ativos)</option><option value="sem_giro">Sem giro</option></select>
-        <button class="btn sec" id="btnCsvParado">Exportar CSV</button></div>
+        <button class="btn alt" id="btnCsvParado">Exportar CSV</button></div>
       <div class="tbl"><table id="tParado"></table></div>
     </div>
   </section>
@@ -309,7 +309,7 @@ function desenharCampanhas(cs){
   cs.forEach((c,i)=>{
     const d=document.createElement('div'); d.className='camp';
     d.innerHTML=`<div style="display:flex;gap:6px;margin-bottom:6px"><input data-k="nome" value="${esc(c.nome)}" style="flex:1;border:1px solid var(--line);border-radius:7px;padding:5px 7px;font:inherit">
-      <button class="btn sec sm" title="remover">×</button></div>
+      <button class="btn alt sm" title="remover">×</button></div>
       <div class="row3"><div class="f"><label>Início</label><input data-k="inicio" type="date" value="${c.inicio}"></div>
       <div class="f"><label>Fim</label><input data-k="fim" type="date" value="${c.fim}"></div>
       <div class="f"><label>Multiplicador</label><input data-k="mult" type="number" step="0.05" value="${c.multiplicador??''}" placeholder="auto"></div></div>`;
@@ -500,7 +500,7 @@ function renderServico(){
     s.projetado.map(c=>`<tr><td><b>${c.classe}</b></td><td class="n">${pct(c.sem_compra)}</td><td class="n"><b>${pct(c.plano)}</b></td><td class="n">${pct(c.economico)}</td><td class="n">${brl(c.receita_perdida_plano)}</td></tr>`).join('')+'</tbody>';
   const lt=S.res.lead_times;
   $('#tLT').innerHTML=`<thead><tr><th>Fornecedor</th><th class="n">Pedidos</th><th class="n">Média</th><th class="n">Mediana</th><th class="n">p90</th><th class="n">p95</th><th class="n">Máx</th><th class="n">CV</th><th class="n">Custo da variab.</th></tr></thead><tbody>`+
-    lt.map(f=>`<tr><td title="${esc(f.nome)}"><b>${f.fornecedor}</b></td><td class="n">${f.pedidos}</td><td class="n">${num(f.media,1)}</td><td class="n">${num(f.p50)}</td><td class="n">${num(f.p90)}</td><td class="n">${num(f.p95)}</td><td class="n">${num(f.max)}</td><td class="n">${num(f.cv,2)}</td><td class="n">${brl(f.custo_variabilidade)}</td></tr>`).join('')+'</tbody>';
+    lt.map(f=>`<tr><td title="${esc(f.nome)}"><b>${f.fornecedor}</b></td><td class="n">${f.pedidos}</td><td class="n">${num(f.media,1)}</td><td class="n">${num(f.p50)}</td><td class="n">${num(f.p90)}</td><td class="n">${num(f.p95)}</td><td class="n">${num(f.max)}</td><td class="n">${num(f.cv,2)}</td><td class="n">${mil(f.custo_variabilidade)}</td></tr>`).join('')+'</tbody>';
   const cores=['#2759a7','#d9176f','#1f8a5b','#b86e00','#7a3fb0','#5b6b7a'];
   chart('cLT',{type:'bar',data:{labels:lt[0]? lt[0].hist.map((_,i)=>`${i*5}-${i*5+4}`):[],datasets:lt.map((f,i)=>({label:f.fornecedor,data:f.hist,backgroundColor:cores[i%6]}))},
     options:{maintainAspectRatio:false,scales:{x:{stacked:true,title:{display:true,text:'dias entre pedido e recebimento'}},y:{stacked:true}}}});
