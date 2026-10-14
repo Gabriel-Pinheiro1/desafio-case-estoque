@@ -12,6 +12,15 @@
 - **Plano:** 177 pedidos e 166 SKUs por R$ 1,97 mi. A receita em risco no trimestre cai de R$ 9,5 mi (sem comprar) para R$ 1,9 mi, e o fill rate projetado fica em 93%. Com R$ 1,37 mi: 139 pedidos, R$ 3,66 mi em risco e fill rate de 87%.
 - **Critério de corte:** saem primeiro os lotes de MOQ que protegem menos margem por real investido. No corte, cada R$ 1 a mais ainda protege R$ 1,39 de margem.
 
+## Agente de IA
+
+A aba "Agente de IA" tem um agente de compras com ferramentas. Ele responde "e se" recalculando o plano de verdade, explica por que um SKU saiu e monta o rascunho da ordem de compra por fornecedor, na unidade de compra e com MOQ.
+
+- **Exemplo:** "E se o orçamento cair para R$ 1,37 mi?" A resposta foi 139 pedidos, R$ 3,66 mi de receita em risco e fill rate de 86,6%, igual ao `/api/calcular`. A tela oferece o botão "Aplicar este cenário".
+- **Números:** todo número vem das ferramentas, e cada resposta lista as ferramentas usadas.
+- **OC:** a ordem de compra é sempre rascunho, pendente de aprovação humana. Nada é enviado.
+- **Sem chave:** sem `AI_API_KEY`, o app funciona igual.
+
 ## Recomendações
 
 **Compra**
